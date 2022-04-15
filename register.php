@@ -1,18 +1,20 @@
 <?php
 include 'redirect_handler.php';
 include "config.php";
-if (isset($_POST['submit'])) {
-    $email = $_POST['email'];
-    $password = md5($_POST['password']);
-    $conf_pwd = md5($_POST['pass_conf']);
+ 
     if ($password == $conf_pwd) {
-        $sql = "SELECT * FROM login_form WHERE email ='$email'";
+        $sql = "SELECT * FROM user WHERE username ='$username'";
         $dup = mysqli_query($conn, $sql);
+        $sql2 = "SELECT * FROM user WHERE email ='$email'";
+        $dup2 = mysqli_query($conn, $sql2);
         if ($dup->num_rows > 0) {
-            $_SESSION['status'] = 'The email has already been used';
+            $_SESSION['status'] = 'This username has already existed';
+            $_SESSION['status_code'] = 'error';
+        } else if ($dup2->num_rows > 0) {
+            $_SESSION['status'] = 'This email has already been used';
             $_SESSION['status_code'] = 'error';
         } else {
-            $sql = "INSERT INTO login_form(email, password) VALUES ('$email','$password')";
+            $sql = "INSERT INTO user(username, password,email) VALUES ('$username','$password','$email')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 $_SESSION['status'] = 'Register successfully';
@@ -26,7 +28,6 @@ if (isset($_POST['submit'])) {
         $_SESSION['status'] = 'The Confirmation Password is Wrong';
         $_SESSION['status_code'] = 'error';
     }
-}
 ?>
 
 <!DOCTYPE html>
@@ -50,6 +51,7 @@ if (isset($_POST['submit'])) {
                     <img src="./assets/image/logo.png" class="rounded mx-auto d-block" alt="..." width=200px height=200px;>
                 </i>
             </div>
+            <div class="mb-3"><input class="form-control" type="text" id="user-field" name="username" placeholder="Username" style="border-radius: 4px;" required></div>
             <div class="mb-3"><input class="form-control" type="email" id="email-field" name="email" placeholder="Email" style="border-radius: 4px;" required></div>
             <div class="mb-3"><input class="form-control" type="password" id="password-field" name="password" placeholder="Password" style="border-radius: 4px;" required></div>
             <div class="mb-3"><input class=" form-control" type="password" id="conf_pass" name="pass_conf" placeholder="Confirmed Password" style="border-radius: 4px;" required></div>

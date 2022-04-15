@@ -5,10 +5,9 @@ include 'redirect_handler.php';
 include "config.php";
 
 if (isset($_POST['submit'])) {
-  $email = $_POST['email'];
+  $username = $_POST['username'];
   $password = md5($_POST['pwd']);
-
-  $sql = "SELECT * FROM login_form WHERE email ='$email' AND password ='$password'";
+  $sql = "SELECT * FROM user WHERE username ='$username' AND password ='$password'";
   $result = mysqli_query($conn, $sql);
   if ($result->num_rows > 0) {
     $row = mysqli_fetch_assoc($result);
@@ -16,7 +15,7 @@ if (isset($_POST['submit'])) {
     redirect('index.php');
   } else {
     $_SESSION['status_code'] = 'error';
-    $_SESSION['status'] = 'The email or password is wrong';
+    $_SESSION['status'] = 'The Username or Password is Wrong';
   }
 }
 ?>
@@ -45,10 +44,10 @@ if (isset($_POST['submit'])) {
         </i>
       </div>
       <div class="mb-3">
-        <input class="form-control" type="email" id="email-field" name="email" placeholder="Email" style="border-radius: 4px" required/>
+        <input class="form-control" type="text" id="email-field" name="username" placeholder="Username" style="border-radius: 4px" required />
       </div>
       <div class="mb-3">
-        <input class="form-control" type="password" id="password-field" name="pwd" placeholder="Password" style="border-radius: 4px" required/>
+        <input class="form-control" type="password" id="password-field" name="pwd" placeholder="Password" style="border-radius: 4px" required />
       </div>
       <div class="mb-3">
         <button class="btn btn-primary d-block w-100" name="submit">
