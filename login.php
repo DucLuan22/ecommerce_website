@@ -1,22 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-include 'redirect_handler.php';
-include "config.php";
+require "./handler/loginHandler.php";
+$login = new LoginHandler();
 
 if (isset($_POST['submit'])) {
-  $username = $_POST['username'];
-  $password = md5($_POST['pwd']);
-  $sql = "SELECT * FROM user WHERE username ='$username' AND password ='$password'";
-  $result = mysqli_query($conn, $sql);
-  if ($result->num_rows > 0) {
-    $row = mysqli_fetch_assoc($result);
-    $_SESSION['username'] = $row['username'];
-    redirect('index.php');
-  } else {
-    $_SESSION['status_code'] = 'error';
-    $_SESSION['status'] = 'The Username or Password is Wrong';
-  }
+  $login->checkLogin($_POST['username'], md5($_POST['pwd']), 'user');
 }
 ?>
 
@@ -40,7 +29,7 @@ if (isset($_POST['submit'])) {
       <h2 class="visually-hidden">Login Form</h2>
       <div class="illustration">
         <i>
-          <img src="./assets/image/logo.png" class="rounded mx-auto d-block" alt="...">
+          <img src="./assets/image/basket-cart-icon-27.png" class="rounded mx-auto d-block" alt="...">
         </i>
       </div>
       <div class="mb-3">
@@ -55,13 +44,15 @@ if (isset($_POST['submit'])) {
         </button>
       </div>
       <a class="forgot" href="register.php">Don't have an account?</a>
+      <a class="forgot" href="login-admin.php" style="font-weight: bold;margin-top: 10px;">
+        Admin Login
+      </a>
     </form>
   </section>
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
-
 <?php
-include 'script.php';
+include './config/script.php'
 ?>

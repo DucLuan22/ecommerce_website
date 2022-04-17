@@ -1,33 +1,9 @@
 <?php
-include 'redirect_handler.php';
-include "config.php";
- 
-    if ($password == $conf_pwd) {
-        $sql = "SELECT * FROM user WHERE username ='$username'";
-        $dup = mysqli_query($conn, $sql);
-        $sql2 = "SELECT * FROM user WHERE email ='$email'";
-        $dup2 = mysqli_query($conn, $sql2);
-        if ($dup->num_rows > 0) {
-            $_SESSION['status'] = 'This username has already existed';
-            $_SESSION['status_code'] = 'error';
-        } else if ($dup2->num_rows > 0) {
-            $_SESSION['status'] = 'This email has already been used';
-            $_SESSION['status_code'] = 'error';
-        } else {
-            $sql = "INSERT INTO user(username, password,email) VALUES ('$username','$password','$email')";
-            $result = mysqli_query($conn, $sql);
-            if ($result) {
-                $_SESSION['status'] = 'Register successfully';
-                $_SESSION['status_code'] = 'success';
-            } else {
-                $_SESSION['status'] = 'Register Unsuccessfully';
-                $_SESSION['status_code'] = 'error';
-            }
-        }
-    } else {
-        $_SESSION['status'] = 'The Confirmation Password is Wrong';
-        $_SESSION['status_code'] = 'error';
-    }
+require "./handler/registerHandler.php";
+if (isset($_POST['submit'])) {
+    $register = new RegisterHandler();
+    $register->register($_POST['username'], $_POST['email'], md5($_POST['password']), $_POST['pass_conf']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +40,7 @@ include "config.php";
 </body>
 
 </html>
+
 <?php
-include 'script.php';
+include './config/script.php'
 ?>

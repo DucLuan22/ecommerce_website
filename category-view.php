@@ -1,32 +1,17 @@
 <?php
-include "config.php";
-include "redirect_handler.php";
-
+require "./handler/Category.php";
+$category = new Category();
 if (isset($_POST['submit'])) {
-  $name = $_POST['category_name'];
-  $desc = $_POST['desc'];
-  $sql = "INSERT INTO category(name, description) VALUES ('$name','$desc')";
-  $result = mysqli_query($conn, $sql);
-  if ($result) {
-    redirect("category.php");
-  } else {
-    die(mysqli_error($conn));
-  }
+  $category->addCategory($_POST['category_name'], $desc = $_POST['desc']);
 }
-
 if (isset($_POST['submit_update'])) {
-  $id = $_POST['edit_id'];
-  $name = $_POST['category_name_update'];
-  $desc = $_POST['desc_update'];
-
-  $sql = "UPDATE category SET name='$name', description ='$desc' WHERE id ='$id'";
-  $query = mysqli_query($conn, $sql);
-  if ($query) {
-    $_SESSION['status_code'] = 'success';
-    $_SESSION['status'] = 'Update Successful';
-    header("refresh:1.5;url=category.php");
-  }
+  $category->updateCategory($_POST['edit_id'], $_POST['category_name_update'], $_POST['desc_update']);
 }
+
+if (isset($_GET['delete_id_category'])) {
+  $category->removeCategory($_GET['delete_id_category']);
+}
+
 ?>
 
 
@@ -40,7 +25,6 @@ if (isset($_POST['submit_update'])) {
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Adamina&amp;display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata&amp;display=swap" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <script src="/static/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -118,28 +102,24 @@ if (isset($_POST['submit_update'])) {
       <thead>
         <tr>
           <th scope="col">ID</th>
-          <th scope="col">name</th>
+          <th scope="col">Name</th>
           <th scope="col">Description</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
         <?php
-        $sql = "Select * from category";
-        $result = mysqli_query($conn, $sql);
-        if ($result) {
-          while ($row = mysqli_fetch_assoc($result)) {
-            $id = $row['id'];
-            $name = $row['name'];
-            $desc = $row['description'];
+        $rows = $category->fetch();
+        if (!empty($rows)) {
+          foreach ($rows as $row) {
             echo '
             <tr>
-          <td scope="row">' . $id . '</td>
-          <td>' . $name . '</td>
-          <td>' . $desc . '</td>
+          <td scope="row">' . $row['id'] . '</td>
+          <td>' . $row['name'] . '</td>
+          <td>' . $row['description'] . '</td>
           <td>
           <button class = "btn btn-primary edit_btn">Edit</button>
-          <button class = "btn btn-danger"><a class ="text-light text-decoration-none" href="delete.php?delete_id_category=' . $id . '">Delete</a></button>
+          <button class = "btn btn-danger"><a class ="text-light text-decoration-none" href="category-view.php?delete_id_category=' . $row['id'] . '">Delete</a></button>
           </td>
         </tr>';
           }
@@ -173,5 +153,5 @@ if (isset($_POST['submit_update'])) {
 </html>
 
 <?php
-include "script.php";
+include './config/script.php'
 ?>
