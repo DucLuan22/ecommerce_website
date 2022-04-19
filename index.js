@@ -23,7 +23,7 @@ $(document).ready(() => {
     margin: 10,
     nav: true,
     rewind: true,
-    autoplay: false,
+    autoplay: true,
     animateOut: "fadeOut",
     navText: [
       "<div class='nav-btn prev-slide'></div>",
@@ -88,4 +88,5 @@ $(document).ready(() => {
       filter: filterValue,
     });
   });
+  
 });
