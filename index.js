@@ -39,7 +39,6 @@ $(document).ready(() => {
 
   $(".banner").on("changed.owl.carousel", (event) => {
     var item = event.item.index;
-    console.log(item);
     $(".hero-title").removeClass("animate__backInRight");
     $(".hero-subtitle").removeClass("animate__backInRight");
     $(".hero-button").removeClass("animate__backInRight");
@@ -47,10 +46,18 @@ $(document).ready(() => {
       .eq(item)
       .find(".hero-title")
       .addClass("animate__backInRight");
-    $(".owl-item").eq(item).find(".hero-subtitle")
-    .addClass("animate__backInRight")
-    $(".owl-item").eq(item).find(".hero-button")
-    .addClass("animate__backInRight")  
+    $(".owl-item")
+      .eq(item)
+      .find(".hero-subtitle")
+      .addClass("animate__backInRight");
+    $(".owl-item")
+      .eq(item)
+      .find(".hero-button")
+      .addClass("animate__backInRight");
+  });
+  //wishlist
+  $(".wishlist").click(function () {
+    $(".heart").toggleClass("fa-heart fa-heart-o");
   });
 
   //featured laptop carousel
@@ -74,6 +81,9 @@ $(document).ready(() => {
   });
 
   //filter products
+  // quick search regex
+  var qsRegex;
+
   var $grid = $(".grid").isotope({
     // options
     itemSelector: ".grid-item",
@@ -81,12 +91,38 @@ $(document).ready(() => {
     percentPosition: true,
   });
 
-  $(".button-group").on("click", "button", (e) => {
-    var button = e.currentTarget;
-    var filterValue = button.getAttribute("data-filter");
+  // use value of search field to filter
+  var $quicksearch = $(".search-input").keyup(
+    debounce(function () {
+      qsRegex = new RegExp($quicksearch.val(), "gi");
+      $grid.isotope({
+        filter: function () {
+          return qsRegex ? $(this).text().match(qsRegex) : true;
+        },
+      });
+    }, 200)
+  );
+
+  // debounce so filtering doesn't happen every millisecond
+  function debounce(fn, threshold) {
+    var timeout;
+    threshold = threshold || 100;
+    return function debounced() {
+      clearTimeout(timeout);
+      var args = arguments;
+      var _this = this;
+      function delayed() {
+        fn.apply(_this, args);
+      }
+      timeout = setTimeout(delayed, threshold);
+    };
+  }
+
+  $("select#brands").on("change", function (e) {
+    var optionSelected = $("option:selected", this);
+    var valueSelected = this.value;
     $grid.isotope({
-      filter: filterValue,
+      filter: valueSelected,
     });
   });
-  
 });
