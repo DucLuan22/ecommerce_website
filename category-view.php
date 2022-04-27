@@ -1,5 +1,5 @@
 <?php
-require "./handler/Category.php";
+require "./classes/category.php";
 $category = new Category();
 if (isset($_POST['submit'])) {
   $category->addCategory($_POST['category_name'], $desc = $_POST['desc']);

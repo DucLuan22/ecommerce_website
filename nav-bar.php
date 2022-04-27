@@ -10,9 +10,10 @@
                         Manage
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="category.php">Category</a>
-                        <a class="dropdown-item" href="brand.php">Brand</a>
-                        <a class="dropdown-item" href="product.php">Product</a>
+                        <a class="dropdown-item" href="category-view.php">Category</a>
+                        <a class="dropdown-item" href="brand-view.php">Brand</a>
+                        <a class="dropdown-item" href="product-view.php">Product</a>
+                        <a class="dropdown-item" href="orders-view.php">Orders</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown" id="manage">
