@@ -4,6 +4,9 @@ $order = new Order();
 if (isset($_GET['confirm_id_order'])) {
     $order->confirmedOrder();
 }
+if (isset($_GET['delete_id_order'])) {
+    $order->removeOrder($_GET['delete_id_order']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +15,7 @@ if (isset($_GET['confirm_id_order'])) {
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <title>Admin Panel</title>
+    <title>View Orders</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Adamina&amp;display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata&amp;display=swap" />
@@ -57,8 +60,8 @@ if (isset($_GET['confirm_id_order'])) {
                         <td>' . $row['location'] . '</td>
                         <td>' . $row['status'] . '</td>
                         <td scope="row">
-        <button class="btn btn-primary"><a class="text-light text-decoration-none" href="index.php?confirm_id_order=' . $row['order_id'] . '">Confirmed</a></button>
-        <button class="btn btn-danger"><a class="text-light text-decoration-none" href="index.php?delete_id_order=' . $row['order_id'] . '">Delete</a></button>
+        <button class="btn btn-primary"><a class="text-light text-decoration-none" href="orers-view.php?confirm_id_order=' . $row['order_id'] . '">Confirmed</a></button>
+        <button class="btn btn-danger"><a class="text-light text-decoration-none" href="orders-view.php?delete_id_order=' . $row['order_id'] . '">Delete</a></button>
                 </td>
                     </tr>';
                         }

@@ -30,13 +30,11 @@ a {
   margin-right: 4px;
 }
 
-.fa.fa-heart,
-.fa.fa-heart-o {
+.fa.fa-heart, .fa.fa-heart-o {
   transform: scale(1.2);
 }
 .fa.fa-heart {
   color: #e91111;
-  background-color: #e91111;
 }
 
 /* Navigation bar */

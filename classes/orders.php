@@ -25,10 +25,10 @@ class Order
     public function removeOrder($id)
     {
         $DB = new DBConnect();
-        $sql = "delete from orders where id= $id";
+        $sql = "delete from orders where order_id= $id";
         $result = mysqli_query($DB->connect(), $sql);
         if ($result) {
-            header("refresh:0.5;url=product-view.php");
+            header("refresh:0.5;url=orders-view.php");
         } else {
             echo "<script>alert('Error')</script>";
         }

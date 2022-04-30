@@ -3,7 +3,9 @@ require_once('./classes/product.php');
 require_once('./classes/cart.php');
 require_once('./classes/category.php');
 require_once('./classes/wishlist.php');
+require_once('./classes/brand.php');
 
+$brand = new Brand();
 $product = new Product();
 $cart = new Cart();
 $wishlist = new Wishlist();
@@ -87,7 +89,7 @@ if (isset($_POST['action'])) {
                         <li class="nav-item dropdown custom-dropdown">
                             <a class="nav-link dropdown-toggle" id="dropdownMenuButton" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 20">ACCOUNT <i class="far fa-user"></i></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#"><span class=""></span>Following</a>
+                                <a class="dropdown-item" href="./wishlist-view.php"><span class=""></span>Wishlist</a>
                                 <a class="dropdown-item" href="./profile-view.php"><span class=""></span>Setting</a>
                                 <a class="dropdown-item" href="./login.php"><span class=""></span>Logout</a>
                             </div>
@@ -169,6 +171,10 @@ if (isset($_POST['action'])) {
                     $rows = $product->fetchByCategory('5');
                     if (!empty($rows)) {
                         foreach ($rows as $row) {
+                            $heart_status = 'fa fa-heart-o';
+                            if ($wishlist->checkAdded($row['productID'], $_SESSION['username']) == true) {
+                                $heart_status = 'fa fa-heart';
+                            }
                             echo '<div class="col-12 col-md-6 top-products__item col-lg-3">
               <div class="top-products__item__img">
               <form method="POST">
@@ -183,7 +189,7 @@ if (isset($_POST['action'])) {
               </div>
               <strong>$' . $row['price'] . '</strong>
               <div class="wishlist" data-bs-toggle="tooltip" data-bs-placement="auto" title="Add to wishlist">
-              <a class="heart fa fa-heart-o" aria-hidden="true" style="color: #e91111;" onclick="addToWishlist(' . $row['productID'] . ')"></a>
+              <a class="heart ' . $heart_status . '" aria-hidden="true" style="color:red;background-color:white;" onclick="addToWishlist(' . $row['productID'] . ')"></a>
             </div>
             </form>
             </div>';
@@ -205,6 +211,10 @@ if (isset($_POST['action'])) {
                         $rows = $product->fetchByCategory('3');
                         if (!empty($rows)) {
                             foreach ($rows as $row) {
+                                $heart_status = 'fa fa-heart-o';
+                                if ($wishlist->checkAdded($row['productID'], $_SESSION['username']) == true) {
+                                    $heart_status = 'fa fa-heart';
+                                }
                                 echo '<div class="top-products__item item">
               <div class="top-products__item__img">
                 <img src="product-images/' . $row['img'] . '" style="width: 100%" />
@@ -217,7 +227,7 @@ if (isset($_POST['action'])) {
                   </div>
                   <strong>$' . $row['price'] . '</strong>
                   <div class="wishlist" data-bs-toggle="tooltip" data-bs-placement="auto" title="Add to wishlist">
-                    <a class="heart fa fa-heart-o" aria-hidden="true" style="color: #e91111;"></a>
+                    <a class="heart ' . $heart_status . '" aria-hidden="true" style="color:red;background-color:white;" onclick="addToWishlist(' . $row['productID'] . ')"></a>
                   </div>
             </div>';
                             }
@@ -235,13 +245,14 @@ if (isset($_POST['action'])) {
                         <div class="search-bar">
                             <select id="brands">
                                 <option value="*">All</option>
-                                <option value=".Apple">Apple</option>
-                                <option value=".Samsung">Samsung</option>
-                                <option value=".Xiaomi">Xiaomi</option>
-                                <option value=".Asus">Asus</option>
-                                <option value=".Dell">Dell</option>
-                                <option value=".Lenovo">Lenovo</option>
-                                <option value=".HP">HP</option>
+                                <?php
+                                $rows = $brand->fetch();
+                                if (!empty($rows)) {
+                                    foreach ($rows as $row) {
+                                        echo '<option value=".' . $row['name'] . '">' . $row['name'] . '</option>';
+                                    }
+                                }
+                                ?>
                             </select>
                             <div class="search-field">
                                 <input type="text" class="search-input" placeholder="I'm looking for..." style="width: 200px" />
@@ -257,6 +268,10 @@ if (isset($_POST['action'])) {
                     $rows = $product->fetch();
                     if (!empty($rows)) {
                         foreach ($rows as $row) {
+                            $heart_status = 'fa fa-heart-o';
+                            if ($wishlist->checkAdded($row['id'], $_SESSION['username']) == true) {
+                                $heart_status = 'fa fa-heart';
+                            }
                             echo '<div class="grid-item ' . $row['brand_name'] . '">
                         <div class="top-products__item">
                             <div class="top-products__item__img">
@@ -270,7 +285,7 @@ if (isset($_POST['action'])) {
                             </div>
                             <strong>$' . $row['price'] . '</strong>
                             <div class="wishlist" data-bs-toggle="tooltip" data-bs-placement="auto" title="Add to wishlist">
-                <a class="heart fa fa-heart-o" aria-hidden="true" style="color: #e91111;"></a>
+                <a class="heart ' . $heart_status . '" aria-hidden="true" style="color:red;background-color:white;" onclick="addToWishlist(' . $row['id'] . ')"></a>
               </div>
                         </div>
                     </div>';

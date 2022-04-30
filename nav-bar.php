@@ -1,3 +1,8 @@
+<?php
+require_once "./classes/admin.php";
+$admin = new Admin();
+
+?>
 <nav class="navbar navbar-light navbar-expand-md" style="background-color: gray">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Admin Panel</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
@@ -13,6 +18,7 @@
                         <a class="dropdown-item" href="category-view.php">Category</a>
                         <a class="dropdown-item" href="brand-view.php">Brand</a>
                         <a class="dropdown-item" href="product-view.php">Product</a>
+                        <a class="dropdown-item" href="product-details-admin.php">Product Details</a>
                         <a class="dropdown-item" href="orders-view.php">Orders</a>
                     </div>
                 </li>
@@ -21,19 +27,25 @@
                         User
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="customer.php">Customer</a>
-                        <a class="dropdown-item" href="#">Admin</a>
+                        <a class="dropdown-item" href="user-view.php">Customer</a>
+                        <a class="dropdown-item" href="admin-view.php">Admin</a>
                     </div>
                 </li>
             </ul>
         </div>
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Hello, Luan
+                <?php
+                $rows = $admin->fetchByUsername($_SESSION['username_admin']);
+                if (!empty($rows)) {
+                    foreach ($rows as $row) {
+                        echo 'Hello, ' . $row['username'] . '';
+                    }
+                }
+                ?>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">Logout</a></li>
-                <li><a class="dropdown-item" href="#">Profiles</a></li>
+                <li><a class="dropdown-item" href="login-admin.php">Logout</a></li>
             </ul>
         </div>
     </div>

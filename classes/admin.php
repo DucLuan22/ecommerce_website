@@ -46,6 +46,19 @@ class Admin
             echo "<script>alert('Error')</script>";
         }
     }
+    public function fetchByUsername($username)
+    {
+        $DB = new DBConnect();
+        $data = null;
+        $sql = "SELECT * FROM admin WHERE username='$username'";
+        $result = mysqli_query($DB->connect(), $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
     public function fetch()
     {
         $DB = new DBConnect();

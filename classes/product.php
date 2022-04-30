@@ -23,6 +23,34 @@ class Product
             die(mysqli_error($DB->connect()));
         }
     }
+
+    public function addProductDetails($product_id, $display, $resolution, $ram, $memory, $cpu, $gpu, $size, $weight)
+    {
+        $DB = new DBConnect();
+        $sql = "INSERT INTO product_details(product_id, display, resolution, RAM, memory, CPU, GPU, size, weight) VALUES ('$product_id','$display','$resolution','$ram','$memory','$cpu','$gpu','$size','$weight')";
+        $result = mysqli_query($DB->connect(), $sql);
+        if ($result) {
+            $_SESSION['status_code'] = 'success';
+            $_SESSION['status'] = 'Add Successfully';
+            header("refresh:1.5;url=product-details-admin.php");
+        } else {
+            die(mysqli_error($DB->connect()));
+        }
+    }
+
+    public function updateProductDetails($product_id, $display, $resolution, $ram, $memory, $cpu, $gpu, $size, $weight)
+    {
+        $DB = new DBConnect();
+        $sql = "UPDATE product_details SET  display='$display', resolution='$resolution', RAM='$ram', memory='$memory', CPU ='$cpu', GPU='$gpu', size='$size', weight='$weight'WHERE product_id ='$product_id'";
+        $result = mysqli_query($DB->connect(), $sql);
+        if ($result) {
+            $_SESSION['status_code'] = 'success';
+            $_SESSION['status'] = 'Update Successfully';
+            header("refresh:1.5;url=product-details-admin.php");
+        } else {
+            die(mysqli_error($DB->connect()));
+        }
+    }
     public function updateProduct($id, $name, $desc, $brand_id, $category_id, $price, $img)
     {
         $DB = new DBConnect();
@@ -46,7 +74,19 @@ class Product
         $sql = "delete from product where id=$id";
         $result = mysqli_query($DB->connect(), $sql);
         if ($result) {
-            header("refresh:0.5;url=cart-view.php");
+            header("refresh:0.5;url=product-view.php");
+        } else {
+            echo "<script>alert('Error')</script>";
+        }
+    }
+
+    public function removeProductDetails($id)
+    {
+        $DB = new DBConnect();
+        $sql = "delete from product_details where product_id=$id";
+        $result = mysqli_query($DB->connect(), $sql);
+        if ($result) {
+            header("refresh:0.5;url=product-details.php");
         } else {
             echo "<script>alert('Error')</script>";
         }
@@ -97,6 +137,46 @@ class Product
         $DB = new DBConnect();
         $data = null;
         $sql = "SELECT product.id AS productID, product.name, product.description, brand.name AS brand_name, category.id, category.name AS category_name, product.price,product.img FROM product INNER JOIN brand ON product.brand_id = brand.id INNER JOIN category ON product.category_id = category.id WHERE product.category_id = $category ORDER BY RAND() LIMIT 8";
+        $result = mysqli_query($DB->connect(), $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
+    public function fetchExcludedFromDetails()
+    {
+        $DB = new DBConnect();
+        $data = null;
+        $sql = "SELECT product.id, product.name FROM product WHERE product.id NOT IN (SELECT product_id FROM product_details);";
+        $result = mysqli_query($DB->connect(), $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
+    public function fetchProductDetails()
+    {
+        $DB = new DBConnect();
+        $data = null;
+        $sql = "SELECT product.id, product.name, b.display, b.resolution, b.RAM,b.memory,b.CPU,b.GPU,b.size,b.weight FROM product INNER JOIN product_details As b ON product.id = b.product_id;";
+        $result = mysqli_query($DB->connect(), $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
+
+    public function fetchProductDetailsByID($id)
+    {
+        $DB = new DBConnect();
+        $data = null;
+        $sql = "SELECT product.id, product.name, b.display, b.resolution, b.RAM,b.memory,b.CPU,b.GPU,b.size,b.weight FROM product INNER JOIN product_details AS b ON product.id = b.product_id WHERE product.id ='$id';";
         $result = mysqli_query($DB->connect(), $sql);
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
