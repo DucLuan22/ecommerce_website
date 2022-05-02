@@ -56,9 +56,11 @@ $(document).ready(() => {
       .addClass("animate__backInRight");
   });
   //wishlist
-  $(".wishlist").click(function () {
-    $(".heart").toggleClass("fa-heart fa-heart-o");
-  });
+  $(".wishlist").each((index, obj) => {
+    $(obj).click(function () {
+      $(this).children(".heart").toggleClass("fa-heart fa-heart-o");
+    })
+  })
 
   //featured laptop carousel
   $(".featured-laptop").owlCarousel({
