@@ -5,6 +5,10 @@ $(document).ready(() => {
       : $(".navbar").removeClass("sticky");
   });
 
+  $(".categori-button-active").on("click", function() {
+    $(".categori-dropdown-active-large").toggleClass("open");
+  })
+
   $(function () {
     $(".custom-dropdown").on("show.bs.dropdown", function () {
       var that = $(this);
@@ -24,6 +28,7 @@ $(document).ready(() => {
     nav: true,
     rewind: true,
     autoplay: true,
+    autoplayHoverPause: true,
     animateOut: "fadeOut",
     navText: [
       "<div class='nav-btn prev-slide'></div>",
