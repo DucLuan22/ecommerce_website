@@ -14,8 +14,8 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
@@ -26,22 +26,16 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-      integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./assets/css/best-carousel-slide.css" />
     <link rel="stylesheet" href="./assets/css/Responsive.css" />
     <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link rel="stylesheet" href="./assets/css/product-filter.css" />
+    <link rel="stylesheet" href="./assets/css/filter-price.css" />
     <link rel="stylesheet" href="./assets/css/user-dropdown.css" />
     <link
       rel="stylesheet"
@@ -410,461 +404,168 @@
     </header>
 
     <main class="main">
-      <section id="banner">
-        <div class="banner-session container-fluid">
-          <div class="owl-carousel owl-theme banner">
-            <div class="item">
-              <div
-                class="bg-light border rounded border-light hero-nature carousel-hero jumbotron py-5 px-4"
-              >
-                <h1
-                  class="hero-title animate__animated animate__backInRight animate__delay-1s"
-                >
-                  Hero
-                </h1>
-                <p
-                  class="hero-subtitle animate__animated animate__backInRight animate__delay-2s"
-                >
-                  Nullam id dolor id nibh ultricies vehicula ut id elit. Cras
-                  justo odio, dapibus ac facilisis in, egestas eget quam.
-                </p>
-                <p>
-                  <a
-                    class="btn btn-primary hero-button plat animate__animated animate__backInRight animate__delay-3s"
-                    role="button"
-                    href="#"
-                    >Learn more</a
-                  >
-                </p>
-              </div>
-            </div>
-            <div class="item">
-              <div
-                class="bg-light border rounded border-light hero-photography carousel-hero jumbotron py-5 px-4"
-              >
-                <h1 class="hero-title animate__animated animate__delay-1s">
-                  Hero Photography
-                </h1>
-                <p class="hero-subtitle animate__animated animate__delay-2s">
-                  Nullam id dolor id nibh ultricies vehicula ut id elit. Cras
-                  justo odio, dapibus ac facilisis in, egestas eget quam.
-                </p>
-                <p>
-                  <a
-                    class="btn btn-primary hero-button plat animate__animated animate__delay-3s"
-                    role="button"
-                    href="#"
-                    >Learn more</a
-                  >
-                </p>
-              </div>
-            </div>
-            <div class="item">
-              <div
-                class="bg-light border rounded border-light hero-technology carousel-hero jumbotron py-5 px-4"
-              >
-                <h1 class="hero-title animate__animated animate__delay-1s">
-                  Hero Technology
-                </h1>
-                <p class="hero-subtitle animate__animated animate__delay-2s">
-                  Nullam id dolor id nibh ultricies vehicula ut id elit. Cras
-                  justo odio, dapibus ac facilisis in, egestas eget quam.
-                </p>
-                <p>
-                  <a
-                    class="btn btn-primary hero-button plat animate__animated animate__delay-3s"
-                    role="button"
-                    href="#"
-                    >Learn more</a
-                  >
-                </p>
-              </div>
-            </div>
+      <div class="container">
+        <div class="page-header breadcrumb-wrap">
+          <div class="container">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Filter</a></li>
+            </ul>
           </div>
         </div>
-      </section>
-      <section id="top-products">
-        <div class="container top-products">
-          <div class="top-products__header">
-            <h1>Featured Smartphone</h1>
-          </div>
-          <div class="top-products__body">
-            <div class="row top-products__list">
-              <div class="col-12 col-md-6 top-products__item col-lg-3">
-                <div class="top-products__item__img">
-                  <img
-                    src="https://cdn.tgdd.vn/Products/Images/42/153856/iphone-xi-do-600x600.jpg"
-                    style="width: 100%"
-                  />
-                </div>
-                <h3 class="item-name">Iphone 11 64GB</h3>
-                <div class="item-rating">
-                  <p>
-                    <i class="fa fa-star"></i><i class="fa fa-star"></i
-                    ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                    ><i class="fa fa-star-o"></i>
-                  </p>
-                </div>
-                <strong>16.490.000VND</strong>
-                <div
-                  class="wishlist"
-                  data-id="1"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="auto"
-                  title="Add to wishlist"
-                >
-                  <i class="heart fa fa-heart-o" aria-hidden="true"></i>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 top-products__item col-lg-3">
-                <div class="top-products__item__img">
-                  <img
-                    src="https://cdn.tgdd.vn/Products/Images/42/242439/Galaxy-S22-Plus-Black-600x600.jpg"
-                    style="width: 100%"
-                  />
-                </div>
-                <h3 class="item-name">Samsung Galaxy S22+ 5G 128GB</h3>
-                <div class="item-rating">
-                  <p>
-                    <i class="fa fa-star"></i><i class="fa fa-star"></i
-                    ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                    ><i class="fa fa-star-o"></i>
-                  </p>
-                </div>
-                <strong>25.990.000VND</strong>
-                <div
-                  class="wishlist"
-                  data-id="2"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="auto"
-                  title="Add to wishlist"
-                >
-                  <i class="heart fa fa-heart-o" aria-hidden="true"></i>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 top-products__item col-lg-3">
-                <div class="top-products__item__img">
-                  <img
-                    src="https://cdn.tgdd.vn/Products/Images/42/250261/iphone-13-pro-max-gold-1-600x600.jpg"
-                    style="width: 100%"
-                  />
-                </div>
-                <h3 class="item-name">Iphone 13 Pro Max 256GB</h3>
-                <div class="item-rating">
-                  <p>
-                    <i class="fa fa-star"></i><i class="fa fa-star"></i
-                    ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                    ><i class="fa fa-star-o"></i>
-                  </p>
-                </div>
-                <strong>35.990.000VND</strong>
-                <div
-                  class="wishlist"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="auto"
-                  title="Add to wishlist"
-                >
-                  <i class="heart fa fa-heart-o" aria-hidden="true"></i>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 top-products__item col-lg-3">
-                <div class="top-products__item__img">
-                  <img
-                    src="https://cdn.tgdd.vn/Products/Images/42/213033/iphone-12-pro-max-xam-new-600x600-600x600.jpg"
-                    style="width: 100%"
-                  />
-                </div>
-                <h3 class="item-name">Iphone 12 Pro Max 256GB</h3>
-                <div class="item-rating">
-                  <p>
-                    <i class="fa fa-star"></i><i class="fa fa-star"></i
-                    ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                    ><i class="fa fa-star fa-star-half"></i>
-                  </p>
-                </div>
-                <strong>31.990.000VND</strong>
-                <div
-                  class="wishlist"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="auto"
-                  title="Add to wishlist"
-                >
-                  <i class="heart fa fa-heart-o" aria-hidden="true"></i>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 top-products__item col-lg-3">
-                <div class="top-products__item__img">
-                  <img
-                    src="https://cdn.tgdd.vn/Products/Images/42/251216/Xiaomi-11T-Grey-600x600.jpg"
-                    style="width: 100%"
-                  />
-                </div>
-                <h3 class="item-name">Xiaomi 11T 5G 256GB</h3>
-                <div class="item-rating">
-                  <p>
-                    <i class="fa fa-star"></i><i class="fa fa-star"></i
-                    ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                    ><i class="fa fa-star fa-star-half"></i>
-                  </p>
-                </div>
-                <strong>11.990.000VND</strong>
-                <div
-                  class="wishlist"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="auto"
-                  title="Add to wishlist"
-                >
-                  <i class="heart fa fa-heart-o" aria-hidden="true"></i>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 top-products__item col-lg-3">
-                <div class="top-products__item__img">
-                  <img
-                    src="https://cdn.tgdd.vn/Products/Images/42/267211/Samsung-Galaxy-S21-FE-tim-600x600.jpg"
-                    style="width: 100%"
-                  />
-                </div>
-                <h3 class="item-name">Samsung Galaxy S21 FE 5G</h3>
-                <div class="item-rating">
-                  <p>
-                    <i class="fa fa-star"></i><i class="fa fa-star"></i
-                    ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                    ><i class="fa fa-star-o"></i>
-                  </p>
-                </div>
-                <strong>15.990.000VND</strong>
-              </div>
-              <div class="col-12 col-md-6 top-products__item col-lg-3">
-                <div class="top-products__item__img">
-                  <img
-                    src="https://cdn.tgdd.vn/Products/Images/42/262566/xiaomi-11t-pro-5g-8gb-thumb-600x600.jpeg"
-                    style="width: 100%"
-                  />
-                </div>
-                <h3 class="item-name">Xiaomi 11T Pro 5G</h3>
-                <div class="item-rating">
-                  <p>
-                    <i class="fa fa-star"></i><i class="fa fa-star"></i
-                    ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                    ><i class="fa fa-star-o"></i>
-                  </p>
-                </div>
-                <strong>13.990.000VND</strong>
-              </div>
-              <div class="col-12 col-md-6 top-products__item col-lg-3">
-                <div class="top-products__item__img">
-                  <img
-                    src="https://cdn.tgdd.vn/Products/Images/42/233241/xiaomi-mi-11-lite-4g-blue-600x600.jpg"
-                    style="width: 100%"
-                  />
-                </div>
-                <h3 class="item-name">Xiaomi Mi 11 series</h3>
-                <div class="item-rating">
-                  <p>
-                    <i class="fa fa-star"></i><i class="fa fa-star"></i
-                    ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                    ><i class="fa fa-star-o"></i>
-                  </p>
-                </div>
-                <strong>7.990.000VND</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container top-products">
-          <div class="top-products__header">
-            <h1><strong>Featured</strong> Laptop</h1>
-          </div>
-          <div class="top-products__body">
-            <div class="top-products__list">
-              <div class="owl-carousel owl-theme featured-laptop">
-                <div class="top-products__item item">
-                  <div class="top-products__item__img">
-                    <img
-                      src="https://cdn.tgdd.vn/Products/Images/44/239552/macbook-air-m1-2020-gray-600x600.jpg"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <h3 class="item-name">MacBook Air M1 2020 7-core GPU</h3>
-                  <div class="item-rating">
-                    <p>
-                      <i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star-o"></i>
-                    </p>
-                  </div>
-                  <strong>30.990.000VND</strong>
-                </div>
-                <div class="top-products__item item">
-                  <div class="top-products__item__img">
-                    <img
-                      src="https://cdn.tgdd.vn/Products/Images/44/269603/lenovo-ideapad-3-14itl6-i5-1135g7-8gb-512gb-600x600.jpg"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <h3 class="item-name">
-                    Lenovo IdeaPad 3 14ITL6 i5 1135G7 (82H700WAVN)
-                  </h3>
-                  <div class="item-rating">
-                    <p>
-                      <i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star-o"></i>
-                    </p>
-                  </div>
-                  <strong>17.690.000VND</strong>
-                </div>
-                <div class="top-products__item item">
-                  <div class="top-products__item__img">
-                    <img
-                      src="https://cdn.tgdd.vn/Products/Images/44/266829/asus-vivobook-a415ea-i3-1125g4-8gb-512gb-win11-eb1748w-600x600.jpg"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <h3 class="item-name">
-                    Asus VivoBook A415EA i3 1125G4 (EB1748W)
-                  </h3>
-                  <div class="item-rating">
-                    <p>
-                      <i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star-o"></i>
-                    </p>
-                  </div>
-                  <strong>15.790.000VND</strong>
-                </div>
-                <div class="top-products__item item">
-                  <div class="top-products__item__img">
-                    <img
-                      src="https://cdn.tgdd.vn/Products/Images/44/269582/asus-zenbook-ux425ea-i5-1135g7-8gb-512gb-600x600.jpg"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <h3 class="item-name">
-                    Asus ZenBook UX425EA i5 1135G7 (KI839W)
-                  </h3>
-                  <div class="item-rating">
-                    <p>
-                      <i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star-o"></i>
-                    </p>
-                  </div>
-                  <strong>22.690.000VND</strong>
-                </div>
-                <div class="top-products__item item">
-                  <div class="top-products__item__img">
-                    <img
-                      src="https://cdn.tgdd.vn/Products/Images/44/264354/dell-gaming-g15-5511-i5-70266676-600x600.jpg"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <h3 class="item-name">
-                    Dell Gaming G15 5511 i5 11400H (70266676)
-                  </h3>
-                  <div class="item-rating">
-                    <p>
-                      <i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star-o"></i>
-                    </p>
-                  </div>
-                  <strong>27.490.000VND</strong>
-                </div>
-                <div class="top-products__item item">
-                  <div class="top-products__item__img">
-                    <img
-                      src="https://cdn.tgdd.vn/Products/Images/44/264354/dell-gaming-g15-5511-i5-70266676-600x600.jpg"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <h3 class="item-name">
-                    Dell Gaming G15 5511 i5 11400H (70266676)
-                  </h3>
-                  <div class="item-rating">
-                    <p>
-                      <i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star-o"></i>
-                    </p>
-                  </div>
-                  <strong>27.490.000VND</strong>
-                </div>
-                <div class="top-products__item item">
-                  <div class="top-products__item__img">
-                    <img
-                      src="https://cdn.tgdd.vn/Products/Images/44/264354/dell-gaming-g15-5511-i5-70266676-600x600.jpg"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <h3 class="item-name">
-                    Dell Gaming G15 5511 i5 11400H (70266676)
-                  </h3>
-                  <div class="item-rating">
-                    <p>
-                      <i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star-o"></i>
-                    </p>
-                  </div>
-                  <strong>27.490.000VND</strong>
-                </div>
-                <div class="top-products__item item">
-                  <div class="top-products__item__img">
-                    <img
-                      src="https://cdn.tgdd.vn/Products/Images/44/264354/dell-gaming-g15-5511-i5-70266676-600x600.jpg"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <h3 class="item-name">
-                    Dell Gaming G15 5511 i5 11400H (70266676)
-                  </h3>
-                  <div class="item-rating">
-                    <p>
-                      <i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star-o"></i>
-                    </p>
-                  </div>
-                  <strong>27.490.000VND</strong>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container all-brands">
-          <div>
-            <div class="all-brands-header mb-5">
-              <h1 class="text-left text-center">Brands</h1>
-              <div class="search-session d-flex justify-content-center">
-                <div class="search-bar">
-                  <select id="brands">
-                    <option value="*">All</option>
-                    <option value=".Apple">Apple</option>
-                    <option value=".Samsung">Samsung</option>
-                    <option value=".Xiaomi">Xiaomi</option>
-                    <option value=".Asus">Asus</option>
-                    <option value=".Dell">Dell</option>
-                    <option value=".Lenovo">Lenovo</option>
-                    <option value=".HP">HP</option>
-                  </select>
-                  <div class="search-field">
+        <div class="products-filter-bar">
+          <div class="container">
+            <div
+              class="filter-bar d-flex justify-content-end align-items-center"
+            >
+              <strong class="filter-label">Filter:</strong>
+              <div class="category-filter py-2 px-4">
+                <details class="category-select">
+                  <summary class="radios">
                     <input
-                      type="text"
-                      class="search-input"
-                      placeholder="I'm looking for..."
-                      style="width: 200px"
+                      type="radio"
+                      name="category"
+                      id="default"
+                      title="Category"
+                      checked=""
                     />
-                    <button class="search-btn" type="button">
-                      <i class="fa fa-search"></i>
-                    </button>
-                  </div>
-                </div>
+                    <input
+                      type="radio"
+                      name="category"
+                      id="category1"
+                      title="Phone"
+                    />
+                    <input
+                      type="radio"
+                      name="category"
+                      id="category2"
+                      title="Laptop"
+                    />
+                    <input
+                      type="radio"
+                      name="category"
+                      id="category3"
+                      title="Tablet"
+                    />
+                    <input
+                      type="radio"
+                      name="category"
+                      id="category4"
+                      title="Watch"
+                    />
+                    <input
+                      type="radio"
+                      name="category"
+                      id="category5"
+                      title="Headphone"
+                    />
+                  </summary>
+                  <ul class="list">
+                    <li>
+                      <label for="category1">Phone</label>
+                    </li>
+                    <li>
+                      <label for="category2">Laptop</label>
+                    </li>
+                    <li>
+                      <label for="category3">Tablet</label>
+                    </li>
+                    <li>
+                      <label for="category4">Watch</label>
+                    </li>
+                    <li>
+                      <label for="category5">Headphone</label>
+                    </li>
+                  </ul>
+                </details>
+              </div>
+              <div class="brand-filter py-2 px-4">
+                <details class="category-select">
+                  <summary class="radios">
+                    <input
+                      type="radio"
+                      name="brand"
+                      id="default"
+                      title="Brand"
+                      checked=""
+                    />
+                    <input
+                      type="radio"
+                      name="brand"
+                      id="brand1"
+                      title="Apple"
+                    />
+                    <input
+                      type="radio"
+                      name="brand"
+                      id="brand2"
+                      title="Samsung"
+                    />
+                    <input
+                      type="radio"
+                      name="brand"
+                      id="brand3"
+                      title="Xiaomi"
+                    />
+                    <input type="radio" name="brand" id="brand4" title="Oppo" />
+                  </summary>
+                  <ul class="list">
+                    <li>
+                      <label for="brand1">Apple</label>
+                    </li>
+                    <li>
+                      <label for="brand2">Samsung</label>
+                    </li>
+                    <li>
+                      <label for="brand3">Xiaomi</label>
+                    </li>
+                    <li>
+                      <label for="brand4">Oppo</label>
+                    </li>
+                  </ul>
+                </details>
+              </div>
+              <div class="sort-filter py-2 px-4">
+                <details class="category-select">
+                  <summary class="radios">
+                    <input
+                      type="radio"
+                      name="sort"
+                      id="default"
+                      title="Sort"
+                      checked=""
+                    />
+                    <input
+                      type="radio"
+                      name="sort"
+                      id="high-low"
+                      title="High to Low"
+                    />
+                    <input
+                      type="radio"
+                      name="sort"
+                      id="low-high"
+                      title="Low to High"
+                    />
+                  </summary>
+                  <ul class="list">
+                    <li>
+                      <label for="high-low">High to Low</label>
+                    </li>
+                    <li>
+                      <label for="low-high">Low to High</label>
+                    </li>
+                  </ul>
+                </details>
               </div>
             </div>
-            <div class="grid">
-              <div class="grid-item Apple">
-                <div class="top-products__item">
+          </div>
+        </div>
+        <div class="row my-5">
+          <div class="col-8">
+            <div class="products-filter">
+              <div class="row top-products__list mt-0">
+                <div class="col-12 col-md-6 top-products__item col-lg-3">
                   <div class="top-products__item__img">
                     <img
                       src="https://cdn.tgdd.vn/Products/Images/42/153856/iphone-xi-do-600x600.jpg"
@@ -880,10 +581,68 @@
                     </p>
                   </div>
                   <strong>16.490.000VND</strong>
+                  <div
+                    class="wishlist"
+                    data-id="1"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="auto"
+                    title="Add to wishlist"
+                  >
+                    <i class="heart fa fa-heart-o" aria-hidden="true"></i>
+                  </div>
                 </div>
-              </div>
-              <div class="grid-item Apple">
-                <div class="top-products__item">
+                <div class="col-12 col-md-6 top-products__item col-lg-3">
+                  <div class="top-products__item__img">
+                    <img
+                      src="https://cdn.tgdd.vn/Products/Images/42/242439/Galaxy-S22-Plus-Black-600x600.jpg"
+                      style="width: 100%"
+                    />
+                  </div>
+                  <h3 class="item-name">Samsung Galaxy S22+ 5G 128GB</h3>
+                  <div class="item-rating">
+                    <p>
+                      <i class="fa fa-star"></i><i class="fa fa-star"></i
+                      ><i class="fa fa-star"></i><i class="fa fa-star"></i
+                      ><i class="fa fa-star-o"></i>
+                    </p>
+                  </div>
+                  <strong>25.990.000VND</strong>
+                  <div
+                    class="wishlist"
+                    data-id="2"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="auto"
+                    title="Add to wishlist"
+                  >
+                    <i class="heart fa fa-heart-o" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 top-products__item col-lg-3">
+                  <div class="top-products__item__img">
+                    <img
+                      src="https://cdn.tgdd.vn/Products/Images/42/250261/iphone-13-pro-max-gold-1-600x600.jpg"
+                      style="width: 100%"
+                    />
+                  </div>
+                  <h3 class="item-name">Iphone 13 Pro Max 256GB</h3>
+                  <div class="item-rating">
+                    <p>
+                      <i class="fa fa-star"></i><i class="fa fa-star"></i
+                      ><i class="fa fa-star"></i><i class="fa fa-star"></i
+                      ><i class="fa fa-star-o"></i>
+                    </p>
+                  </div>
+                  <strong>35.990.000VND</strong>
+                  <div
+                    class="wishlist"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="auto"
+                    title="Add to wishlist"
+                  >
+                    <i class="heart fa fa-heart-o" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 top-products__item col-lg-3">
                   <div class="top-products__item__img">
                     <img
                       src="https://cdn.tgdd.vn/Products/Images/42/213033/iphone-12-pro-max-xam-new-600x600-600x600.jpg"
@@ -899,10 +658,16 @@
                     </p>
                   </div>
                   <strong>31.990.000VND</strong>
+                  <div
+                    class="wishlist"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="auto"
+                    title="Add to wishlist"
+                  >
+                    <i class="heart fa fa-heart-o" aria-hidden="true"></i>
+                  </div>
                 </div>
-              </div>
-              <div class="grid-item Xiaomi">
-                <div class="top-products__item">
+                <div class="col-12 col-md-6 top-products__item col-lg-3">
                   <div class="top-products__item__img">
                     <img
                       src="https://cdn.tgdd.vn/Products/Images/42/251216/Xiaomi-11T-Grey-600x600.jpg"
@@ -918,10 +683,16 @@
                     </p>
                   </div>
                   <strong>11.990.000VND</strong>
+                  <div
+                    class="wishlist"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="auto"
+                    title="Add to wishlist"
+                  >
+                    <i class="heart fa fa-heart-o" aria-hidden="true"></i>
+                  </div>
                 </div>
-              </div>
-              <div class="grid-item Samsung">
-                <div class="top-products__item">
+                <div class="col-12 col-md-6 top-products__item col-lg-3">
                   <div class="top-products__item__img">
                     <img
                       src="https://cdn.tgdd.vn/Products/Images/42/267211/Samsung-Galaxy-S21-FE-tim-600x600.jpg"
@@ -938,9 +709,7 @@
                   </div>
                   <strong>15.990.000VND</strong>
                 </div>
-              </div>
-              <div class="grid-item Xiaomi">
-                <div class="top-products__item">
+                <div class="col-12 col-md-6 top-products__item col-lg-3">
                   <div class="top-products__item__img">
                     <img
                       src="https://cdn.tgdd.vn/Products/Images/42/262566/xiaomi-11t-pro-5g-8gb-thumb-600x600.jpeg"
@@ -957,9 +726,7 @@
                   </div>
                   <strong>13.990.000VND</strong>
                 </div>
-              </div>
-              <div class="grid-item Xiaomi">
-                <div class="top-products__item">
+                <div class="col-12 col-md-6 top-products__item col-lg-3">
                   <div class="top-products__item__img">
                     <img
                       src="https://cdn.tgdd.vn/Products/Images/42/233241/xiaomi-mi-11-lite-4g-blue-600x600.jpg"
@@ -977,135 +744,56 @@
                   <strong>7.990.000VND</strong>
                 </div>
               </div>
-              <div class="grid-item Apple">
-                <div class="top-products__item">
-                  <div class="top-products__item__img">
-                    <img
-                      src="https://cdn.tgdd.vn/Products/Images/44/239552/macbook-air-m1-2020-gray-600x600.jpg"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <h3 class="item-name">Macbook Air M1 2020 7-CORE GPU</h3>
-                  <div class="item-rating">
-                    <p>
-                      <i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star fa-star-half"></i>
-                    </p>
-                  </div>
-                  <strong>30.990.000VND</strong>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="wrapper">
+              <header>
+                <h2 class="text-center">Price Range</h2>
+              </header>
+              <div class="price-input">
+                <div class="field">
+                  <span><i class="fa-solid fa-dollar-sign"></i></span>
+                  <input type="number" class="input-min" value="2500" />
+                </div>
+                <div class="separator">-</div>
+                <div class="field">
+                  <span><i class="fa-solid fa-dollar-sign"></i></span>
+                  <input type="number" class="input-max" value="7500" />
                 </div>
               </div>
-              <div class="grid-item Apple">
-                <div class="top-products__item">
-                  <div class="top-products__item__img">
-                    <img
-                      src="https://cdn.tgdd.vn/Products/Images/44/253581/apple-macbook-pro-14-m1-pro-2021-600x600.jpg"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <h3 class="item-name">
-                    MacBook Pro 14 M1 Pro 2021/14 core-GPU
-                  </h3>
-                  <div class="item-rating">
-                    <p>
-                      <i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star fa-star-half"></i>
-                    </p>
-                  </div>
-                  <strong>52.990.000VND</strong>
-                </div>
+              <div class="slider">
+                <div class="progress"></div>
               </div>
-              <div class="grid-item Lenovo">
-                <div class="top-products__item">
-                  <div class="top-products__item__img">
-                    <img
-                      src="https://cdn.tgdd.vn/Products/Images/44/269603/lenovo-ideapad-3-14itl6-i5-1135g7-8gb-512gb-600x600.jpg"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <h3 class="item-name">
-                    Lenovo IdeaPad 3 14ITL6 i5 1135G7 (82H700WAVN)
-                  </h3>
-                  <div class="item-rating">
-                    <p>
-                      <i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star fa-star-half"></i>
-                    </p>
-                  </div>
-                  <strong>17.690.000VND</strong>
-                </div>
+              <div class="range-input">
+                <input
+                  type="range"
+                  class="range-min"
+                  min="0"
+                  max="10000"
+                  value="2500"
+                  step="100"
+                />
+                <input
+                  type="range"
+                  class="range-max"
+                  min="0"
+                  max="10000"
+                  value="7500"
+                  step="100"
+                />
               </div>
-              <div class="grid-item Dell">
-                <div class="top-products__item">
-                  <div class="top-products__item__img">
-                    <img
-                      src="https://cdn.tgdd.vn/Products/Images/44/264354/dell-gaming-g15-5511-i5-70266676-600x600.jpg"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <h3 class="item-name">
-                    Dell Gaming G15 5511 i5 11400H (70266676)
-                  </h3>
-                  <div class="item-rating">
-                    <p>
-                      <i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star fa-star-half"></i>
-                    </p>
-                  </div>
-                  <strong>27.490.000VND</strong>
-                </div>
-              </div>
-              <div class="grid-item HP">
-                <div class="top-products__item">
-                  <div class="top-products__item__img">
-                    <img
-                      src="https://cdn.tgdd.vn/Products/Images/44/242415/hp-elitebook-x360-1040-g8-i7-3g1h4pa-18-600x600.jpg"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <h3 class="item-name">
-                    HP EliteBook X360 1040 G8 i7 1165G7 (3G1H4PA)
-                  </h3>
-                  <div class="item-rating">
-                    <p>
-                      <i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star fa-star-half"></i>
-                    </p>
-                  </div>
-                  <strong>48.890.000VND</strong>
-                </div>
-              </div>
-              <div class="grid-item Asus">
-                <div class="top-products__item">
-                  <div class="top-products__item__img">
-                    <img
-                      src="https://cdn.tgdd.vn/Products/Images/44/269582/asus-zenbook-ux425ea-i5-1135g7-8gb-512gb-600x600.jpg"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <h3 class="item-name">
-                    Asus ZenBook UX425EA i5 1135G7 (KI839W)
-                  </h3>
-                  <div class="item-rating">
-                    <p>
-                      <i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star fa-star-half"></i>
-                    </p>
-                  </div>
-                  <strong>22.690.000VND</strong>
-                </div>
+              <div class="mt-5 d-flex justify-content-center">
+                <button class="filter-button" role="button">
+                  <i class="fa-solid fa-filter"></i>Filter
+                </button>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </main>
+
     <section id="footer">
       <footer>
         <div class="container">
@@ -1196,19 +884,7 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
-      integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"
-      integrity="sha512-Zq2BOxyhvnRFXu0+WE6ojpZLOU2jdnqbrM1hmVdGzyeCa1DgM3X5Q4A/Is9xA1IkbUeDd7755dNNI/PzSf2Pew=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
     <script src="./index.js"></script>
-    <script src="./main-page.js"></script>
+    <script src="./product-filter.js"></script>
   </body>
 </html>

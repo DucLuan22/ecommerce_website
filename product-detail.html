@@ -1,553 +1,730 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/best-carousel-slide.css" />
+    <link rel="stylesheet" href="./assets/css/Responsive.css" />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link rel="stylesheet" href="./assets/css/product-detail.css" />
+    <link rel="stylesheet" href="./assets/css/user-dropdown.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+      integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+      integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-    integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="./assets/css/best-carousel-slide.css" />
-  <link rel="stylesheet" href="./assets/css/Responsive.css" />
-  <link rel="stylesheet" href="./assets/css/styles.css" />
-  <link rel="stylesheet" href="./assets/css/product-detail.css" />
-  <link rel="stylesheet" href="./assets/css/user-dropdown.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
-    integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
-    integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+  <body>
+    <header>
+      <div class="navbar-session container-fluid">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#"
+            ><img src="./assets/Images/ecommerce-logo.png" style="width: 40px"
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-<body>
-  <header>
-    <div class="navbar-session container-fluid">
-      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img src="./assets/Images/ecommerce-logo.png" style="width: 40px" /></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-          <ul class="navbar-nav w-100">
-            <li class="main-categori-wrap d-flex align-items-center" role="button">
-              <div class="categori-button-active">
-                <span class="fa-solid fa-bars"></i></span> Browse Categories
+          <div
+            class="collapse navbar-collapse justify-content-between"
+            id="navbarSupportedContent"
+          >
+            <ul class="navbar-nav w-100">
+              <li
+                class="main-categori-wrap d-flex align-items-center"
+                role="button"
+              >
+                <div class="categori-button-active">
+                  <span class="fa-solid fa-bars"></span> Browse Categories
+                </div>
+                <div
+                  class="categori-dropdown-wrap categori-dropdown-active-large"
+                >
+                  <ul>
+                    <li class="has-children">
+                      <a href="shop-grid-right.html"
+                        ><i class="fa fa-mobile" aria-hidden="true"></i>
+                        <span>Phone</span>
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                      </a>
+                      <div class="dropdown-menu">
+                        <ul class="mega-menu d-block">
+                          <li class="mega-menu-col">
+                            <ul class="d-block">
+                              <li class="mega-menu-col">
+                                <ul>
+                                  <li>
+                                    <span class="submenu-title"
+                                      >Hot &amp; Trending</span
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      class="dropdown-item nav-link nav_item"
+                                      href="#"
+                                      >Iphone</a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      class="dropdown-item nav-link nav_item"
+                                      href="#"
+                                      >Samsung</a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      class="dropdown-item nav-link nav_item"
+                                      href="#"
+                                      >Xiaomi</a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      class="dropdown-item nav-link nav_item"
+                                      href="#"
+                                      >Oppo</a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      class="dropdown-item nav-link nav_item"
+                                      href="#"
+                                      >Realme</a
+                                    >
+                                  </li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li class="has-children">
+                      <a href="shop-grid-right.html"
+                        ><i class="fa fa-laptop" aria-hidden="true"></i>
+                        <span>Laptop</span>
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                      </a>
+                      <div class="dropdown-menu">
+                        <ul class="mega-menu d-block">
+                          <li class="mega-menu-col">
+                            <ul class="d-block">
+                              <li class="mega-menu-col">
+                                <ul>
+                                  <li>
+                                    <span class="submenu-title"
+                                      >Hot &amp; Trending</span
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      class="dropdown-item nav-link nav_item"
+                                      href="#"
+                                      >Mac</a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      class="dropdown-item nav-link nav_item"
+                                      href="#"
+                                      >HP</a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      class="dropdown-item nav-link nav_item"
+                                      href="#"
+                                      >Dell</a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      class="dropdown-item nav-link nav_item"
+                                      href="#"
+                                      >Lenovo</a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      class="dropdown-item nav-link nav_item"
+                                      href="#"
+                                      >ASUS</a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      class="dropdown-item nav-link nav_item"
+                                      href="#"
+                                      >ACER</a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      class="dropdown-item nav-link nav_item"
+                                      href="#"
+                                      >LG</a
+                                    >
+                                  </li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li class="has-children">
+                      <a href="shop-grid-right.html"
+                        ><i class="fa fa-tablet" aria-hidden="true"></i>
+                        <span>Tablet</span>
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                      </a>
+                      <div class="dropdown-menu">
+                        <ul class="mega-menu d-block">
+                          <li class="mega-menu-col">
+                            <ul class="d-block">
+                              <li class="mega-menu-col">
+                                <ul>
+                                  <li>
+                                    <span class="submenu-title"
+                                      >Hot &amp; Trending</span
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      class="dropdown-item nav-link nav_item"
+                                      href="#"
+                                      >iPad Pro</a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      class="dropdown-item nav-link nav_item"
+                                      href="#"
+                                      >iPad Air</a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      class="dropdown-item nav-link nav_item"
+                                      href="#"
+                                      >iPad Mini</a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      class="dropdown-item nav-link nav_item"
+                                      href="#"
+                                      >Samsung Tab</a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      class="dropdown-item nav-link nav_item"
+                                      href="#"
+                                      >Lenovo Tab</a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      class="dropdown-item nav-link nav_item"
+                                      href="#"
+                                      >Xiaomi Pad</a
+                                    >
+                                  </li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="#"
+                  >Home <span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="nav-item dropdown" id="shopDropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  data-toggle="dropdown"
+                  >SHOP
                 </a>
-              </div>
-              <div class="categori-dropdown-wrap categori-dropdown-active-large">
-                <ul>
-                  <li class="has-children">
-                    <a href="shop-grid-right.html"><i class="fa fa-mobile" aria-hidden="true"></i>
-                      <span>Phone</span>
-                      <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                    </a>
-                    <div class="dropdown-menu">
-                      <ul class="mega-menu d-block">
-                        <li class="mega-menu-col">
-                          <ul class="d-block">
-                            <li class="mega-menu-col">
-                              <ul>
-                                <li>
-                                  <span class="submenu-title">Hot &amp; Trending</span>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item nav-link nav_item" href="#">Iphone</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item nav-link nav_item" href="#">Samsung</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item nav-link nav_item" href="#">Xiaomi</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item nav-link nav_item" href="#">Oppo</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item nav-link nav_item" href="#">Realme</a>
-                              </ul>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
+                <ul
+                  class="dropdown-menu main-menu"
+                  aria-labelledby="shopDropdown"
+                >
+                  <li class="nav-item dropdown-submenu" id="sub-nav">
+                    <a class="nav-link" href="#">Apple</a>
+                    <ul class="dropdown-menu">
+                      <li><a tabindex="-1" href="#">Iphone</a></li>
+                      <li><a href="#">Ipad</a></li>
+                      <li><a href="#">Macbook</a></li>
+                      <li><a href="#">Apple Watch</a></li>
+                    </ul>
                   </li>
-                  <li class="has-children">
-                    <a href="shop-grid-right.html"><i class="fa fa-laptop" aria-hidden="true"></i>
-                      <span>Laptop</span>
-                      <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                    </a>
-                    <div class="dropdown-menu">
-                      <ul class="mega-menu d-block">
-                        <li class="mega-menu-col">
-                          <ul class="d-block">
-                            <li class="mega-menu-col">
-                              <ul>
-                                <li>
-                                  <span class="submenu-title">Hot &amp; Trending</span>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item nav-link nav_item" href="#">Mac</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item nav-link nav_item" href="#">HP</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item nav-link nav_item" href="#">Dell</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item nav-link nav_item" href="#">Lenovo</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item nav-link nav_item" href="#">ASUS</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item nav-link nav_item" href="#">ACER</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item nav-link nav_item" href="#">LG</a>
-                                </li>
-                              </ul>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
+                  <li class="nav-item dropdown-submenu" id="sub-nav">
+                    <a class="nav-link" href="#">Samsung</a>
+                    <ul class="dropdown-menu">
+                      <li><a tabindex="-1" href="#">Second level</a></li>
+                      <li><a href="#">Second level</a></li>
+                      <li><a href="#">Second level</a></li>
+                    </ul>
                   </li>
-                  <li class="has-children">
-                    <a href="shop-grid-right.html"><i class="fa fa-tablet" aria-hidden="true"></i>
-                      <span>Tablet</span>
-                      <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                    </a>
-                    <div class="dropdown-menu">
-                      <ul class="mega-menu d-block">
-                        <li class="mega-menu-col">
-                          <ul class="d-block">
-                            <li class="mega-menu-col">
-                              <ul>
-                                <li>
-                                  <span class="submenu-title">Hot &amp; Trending</span>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item nav-link nav_item" href="#">iPad Pro</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item nav-link nav_item" href="#">iPad Air</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item nav-link nav_item" href="#">iPad Mini</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item nav-link nav_item" href="#">Samsung Tab</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item nav-link nav_item" href="#">Lenovo Tab</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item nav-link nav_item" href="#">Xiaomi Pad</a>
-                                </li>
-                              </ul>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
+                  <li class="nav-item dropdown-submenu" id="sub-nav">
+                    <a class="nav-link" href="#">Xiaomi</a>
+                    <ul class="dropdown-menu">
+                      <li><a tabindex="-1" href="#">Second level</a></li>
+                      <li><a href="#">Second level</a></li>
+                      <li><a href="#">Second level</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/blog-4">Grid (Full Width)</a>
+                  </li>
+                  <li class="nav-item dropdown-submenu" id="sub-nav">
+                    <a class="nav-link" href="#">Single Post</a>
+                    <ul class="dropdown-menu">
+                      <li><a tabindex="-1" href="#">Second level</a></li>
+                      <li><a href="#">Second level</a></li>
+                      <li><a href="#">Second level</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/blog-5">Right Sidebar</a>
                   </li>
                 </ul>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="#footer">CONTACT</a>
+              </li>
+              <li class="nav-item dropdown custom-dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  id="dropdownMenuButton"
+                  href="#"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  data-offset="0, 20"
+                  >ACCOUNT <i class="far fa-user"></i
+                ></a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">
+                    <span class=""></span> User Dashboard</a
+                  >
+                  <a class="dropdown-item" href="#"
+                    ><span class=""></span>Inbox
+                    <span class="number">3</span></a
+                  >
+                  <a class="dropdown-item" href="#"
+                    ><span class=""></span>Following</a
+                  >
+                  <a class="dropdown-item" href="#"
+                    ><span class=""></span>Setting<span>New</span></a
+                  >
+                  <a class="dropdown-item" href="#"
+                    ><span class=""></span>Log out</a
+                  >
+                </div>
+              </li>
+            </ul>
+
+            <div class="wishlist-checkout">
+              <div class="add-to-wishlist">
+                <a class="text-start" href="">
+                  <i class="fa fa-heart-o" aria-hidden="true"></i>
+                  <span class="wishlist-items" style="width: 18px">4</span>
+                </a>
+                <p class="wishlist-title my-0">My Wish List</p>
               </div>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item dropdown" id="shopDropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">SHOP
-              </a>
-              <ul class="dropdown-menu main-menu" aria-labelledby="shopDropdown">
-                <li class="nav-item dropdown-submenu" id="sub-nav">
-                  <a class="nav-link" href="#">Apple</a>
-                  <ul class="dropdown-menu">
-                    <li><a tabindex="-1" href="#">Iphone</a></li>
-                    <li><a href="#">Ipad</a></li>
-                    <li><a href="#">Macbook</a></li>
-                    <li><a href="#">Apple Watch</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item dropdown-submenu" id="sub-nav">
-                  <a class="nav-link" href="#">Samsung</a>
-                  <ul class="dropdown-menu">
-                    <li><a tabindex="-1" href="#">Second level</a></li>
-                    <li><a href="#">Second level</a></li>
-                    <li><a href="#">Second level</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item dropdown-submenu" id="sub-nav">
-                  <a class="nav-link" href="#">Xiaomi</a>
-                  <ul class="dropdown-menu">
-                    <li><a tabindex="-1" href="#">Second level</a></li>
-                    <li><a href="#">Second level</a></li>
-                    <li><a href="#">Second level</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/blog-4">Grid (Full Width)</a>
-                </li>
-                <li class="nav-item dropdown-submenu" id="sub-nav">
-                  <a class="nav-link" href="#">Single Post</a>
-                  <ul class="dropdown-menu">
-                    <li><a tabindex="-1" href="#">Second level</a></li>
-                    <li><a href="#">Second level</a></li>
-                    <li><a href="#">Second level</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/blog-5">Right Sidebar</a>
+              <div class="checkout">
+                <a class="text-start" href="#"
+                  ><i class="fa-solid fa-cart-shopping"></i>
+                  <span class="checkout-items" style="width: 18px">2</span></a
+                >
+                <p class="cart-title my-0">My Cart</p>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <section id="product-detail">
+        <div class="container my-5">
+          <div class="row detail-page">
+            <div class="col-lg-6 col-12 product-photos">
+              <div class="product-img">
+                <img
+                  src="//cdn.tgdd.vn/Products/Images/42/153856/iphone-11-do-1-1-1-org.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="product-img-list mt-4">
+                <div class="product-img-item">
+                  <img
+                    src="//cdn.tgdd.vn/Products/Images/42/153856/iphone-11-do-1-1-1-org.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="product-img-item">
+                  <img
+                    src="//cdn.tgdd.vn/Products/Images/42/153856/iphone-11-xanh-la-1-1-org.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="product-img-item">
+                  <img
+                    src="//cdn.tgdd.vn/Products/Images/42/153856/iphone-11-den-1-1-1-org.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-12 product-shop">
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Apple</a></li>
+                <li class="breadcrumb-item">Iphone</li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Iphone 11 64GB
                 </li>
               </ul>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="#footer">CONTACT</a>
-            </li>
-            <li class="nav-item dropdown custom-dropdown">
-              <a class="nav-link dropdown-toggle" id="dropdownMenuButton" href="#" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false" data-offset="0, 20">ACCOUNT <i class="far fa-user"></i></a>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">
-                  <span class=""></span> User Dashboard</a>
-                <a class="dropdown-item" href="#"><span class=""></span>Inbox
-                  <span class="number">3</span></a>
-                <a class="dropdown-item" href="#"><span class=""></span>Following</a>
-                <a class="dropdown-item" href="#"><span class=""></span>Setting<span>New</span></a>
-                <a class="dropdown-item" href="#"><span class=""></span>Log out</a>
-              </div>
-            </li>
-          </ul>
-
-          <div class="wishlist-checkout">
-            <div class="add-to-wishlist">
-              <a class="text-start" href="">
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-                <span class="wishlist-items" style="width: 18px">4</span>
-              </a>
-              <p class="wishlist-title my-0">My Wish List</p>
-            </div>
-            <div class="checkout">
-              <a class="text-start" href="#"><i class="fa-solid fa-cart-shopping"></i>
-                <span class="checkout-items" style="width: 18px">2</span></a>
-              <p class="cart-title my-0">My Cart</p>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <main class="main">
-    <section id="product-detail">
-      <div class="container my-5">
-        <div class="row detail-page">
-          <div class="col-lg-6 col-12 product-photos">
-            <div class="product-img">
-              <img src="//cdn.tgdd.vn/Products/Images/42/153856/iphone-11-do-1-1-1-org.jpg" alt="" />
-            </div>
-            <div class="product-img-list mt-4">
-              <div class="product-img-item">
-                <img src="//cdn.tgdd.vn/Products/Images/42/153856/iphone-11-do-1-1-1-org.jpg" alt="" />
-              </div>
-              <div class="product-img-item">
-                <img src="//cdn.tgdd.vn/Products/Images/42/153856/iphone-11-xanh-la-1-1-org.jpg" alt="" />
-              </div>
-              <div class="product-img-item">
-                <img src="//cdn.tgdd.vn/Products/Images/42/153856/iphone-11-den-1-1-1-org.jpg" alt="" />
+              <div class="product-detail-info">
+                <div class="product-detail-info-name">
+                  <h1>Iphone 11 64GB</h1>
+                </div>
+                <div class="product-detail-info-title">
+                  <span>Brand: </span>
+                  <a href="">Apple</a>
+                </div>
+                <div class="product-detail-info-rating">
+                  <span>Rating: </span>
+                  <span>
+                    <i class="fa fa-star"></i><i class="fa fa-star"></i
+                    ><i class="fa fa-star"></i><i class="fa fa-star"></i
+                    ><i class="fa fa-star-half"></i>
+                  </span>
+                </div>
+                <div class="product-detail-info-description">
+                  <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Iste amet excepturi sint voluptates ex ab ea voluptatum
+                    assumenda harum magni.
+                  </p>
+                </div>
+                <div class="product-detail-info-price">
+                  <p class="product-price">16.490.000VND</p>
+                </div>
+                <div class="product-detail-info-quantity">
+                  <form>
+                    <fieldset data-quantity>
+                      <legend>Change quantity</legend>
+                    </fieldset>
+                  </form>
+                </div>
+                <div class="product-add-to-cart">
+                  <button class="add-to-cart">
+                    Add to cart <i class="fas fa-shopping-cart"></i>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-6 col-12 product-shop">
-            <ul class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item"><a href="#">Apple</a></li>
-              <li class="breadcrumb-item">Iphone</li>
-              <li class="breadcrumb-item active" aria-current="page">Iphone 11 64GB</li>
-
-            </ul>
-            <div class="product-detail-info">
-              <div class="product-detail-info-name">
-                <h1>Iphone 11 64GB</h1>
-              </div>
-              <div class="product-detail-info-title">
-                <span>Brand: </span>
-                <a href="">Apple</a>
-              </div>
-              <div class="product-detail-info-rating">
-                <span>Rating: </span>
-                <span>
-                  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                    class="fa fa-star"></i><i class="fa fa-star-half"></i>
-                </span>
-              </div>
-              <div class="product-detail-info-description">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste
-                  amet excepturi sint voluptates ex ab ea voluptatum assumenda
-                  harum magni.
-                </p>
-              </div>
-              <div class="product-detail-info-price">
-                <p class="product-price">16.490.000VND</p>
-              </div>
-              <div class="product-detail-info-quantity">
-                <form>
-                  <fieldset data-quantity>
-                    <legend>Change quantity</legend>
-                  </fieldset>
-                </form>
-              </div>
-              <div class="product-add-to-cart">
-                <button class="add-to-cart">
-                  Add to cart <i class="fas fa-shopping-cart"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row my-5">
-          <div class="detail-info col-12 col-lg-6">
-            <div class="block-section">
-              <div class="table-wrapper product-detail-content">
-                <div class="attributes-list">
-                  <div class="attribute-title">
-                    <i class="fa-solid fa-gear"></i>
-                    <span>Details</span>
-                  </div>
-                  <hr />
-                  <div class="table additional-attributes">
-                    <ul>
-                      <li>
-                        <p>Screen</p>
-                        <div>
-                          <span>ISP LCD</span>
-                        </div>
-                      </li>
-                      <li>
-                        <p>Resolution</p>
-                        <div>
-                          <span>828 x 1792 pixels</span>
-                        </div>
-                      </li>
-                      <li>
-                        <p>Screen Width</p>
-                        <div>
-                          <span>6.1 inches</span>
-                        </div>
-                      </li>
-                      <li>
-                        <p>Rear Camera</p>
-                        <div>
-                          <span>12 MP + 12 MP</span>
-                        </div>
-                      </li>
-                      <li>
-                        <p>Film</p>
-                        <div>
-                          <span>2160p@24/30/60fps, 1080p@30/60/120/240fps, HDR,
-                            stereo sound rec.</span>
-                        </div>
-                      </li>
-                      <li>
-                        <p>Front Camera</p>
-                        <div>
-                          <span>12 MP, f/2.2</span>
-                        </div>
-                      </li>
-                      <li>
-                        <p>Operating System</p>
-                        <div>
-                          <span>iOS 13</span>
-                        </div>
-                      </li>
-                      <li>
-                        <p>Chipset (CPU manufacturer)</p>
-                        <div>
-                          <span>Apple A13 Bionic</span>
-                        </div>
-                      </li>
-                      <li>
-                        <p>CPU speed</p>
-                        <div>
-                          <span>Hexa-core</span>
-                        </div>
-                      </li>
-                      <li>
-                        <p>RAM</p>
-                        <div>
-                          <span>4 GB</span>
-                        </div>
-                      </li>
-                      <li>
-                        <p>Memory</p>
-                        <div>
-                          <span>64 GB</span>
-                        </div>
-                      </li>
-                      <li>
-                        <p>SIM</p>
-                        <div>
-                          <span>Nano SIM</span>
-                        </div>
-                      </li>
-                      <li>
-                        <p>Wifi</p>
-                        <div>
-                          <span>Wi-Fi 802.11 a/b/g/n/ac/ax, dual-band,
-                            hotspot</span>
-                        </div>
-                      </li>
-                      <li>
-                        <p>GPS</p>
-                        <div>
-                          <span>A-GPS, GLONASS, GALILEO, QZSS</span>
-                        </div>
-                      </li>
-                      <li>
-                        <p>Bluetooth</p>
-                        <div>
-                          <span>5.0, A2DP, LE</span>
-                        </div>
-                      </li>
-                      <li>
-                        <p>Size</p>
-                        <div>
-                          <span>150.9 x 75.7 x 8.3 mm</span>
-                        </div>
-                      </li>
-                      <li>
-                        <p>Weight</p>
-                        <div>
-                          <span>194 g</span>
-                        </div>
-                      </li>
-                      <li>
-                        <p>Battery</p>
-                        <div>
-                          <span>3110 mAh</span>
-                        </div>
-                      </li>
-                      <li>
-                        <p>Battery type</p>
-                        <div>
-                          <span>Li-Ion</span>
-                        </div>
-                      </li>
-                    </ul>
+          <div class="row my-5">
+            <div class="detail-info col-12 col-lg-6">
+              <div class="block-section">
+                <div class="table-wrapper product-detail-content">
+                  <div class="attributes-list">
+                    <div class="attribute-title">
+                      <i class="fa-solid fa-gear"></i>
+                      <span>Details</span>
+                    </div>
+                    <hr />
+                    <div class="table additional-attributes">
+                      <ul>
+                        <li>
+                          <p>Screen</p>
+                          <div>
+                            <span>ISP LCD</span>
+                          </div>
+                        </li>
+                        <li>
+                          <p>Resolution</p>
+                          <div>
+                            <span>828 x 1792 pixels</span>
+                          </div>
+                        </li>
+                        <li>
+                          <p>Screen Width</p>
+                          <div>
+                            <span>6.1 inches</span>
+                          </div>
+                        </li>
+                        <li>
+                          <p>Rear Camera</p>
+                          <div>
+                            <span>12 MP + 12 MP</span>
+                          </div>
+                        </li>
+                        <li>
+                          <p>Film</p>
+                          <div>
+                            <span
+                              >2160p@24/30/60fps, 1080p@30/60/120/240fps, HDR,
+                              stereo sound rec.</span
+                            >
+                          </div>
+                        </li>
+                        <li>
+                          <p>Front Camera</p>
+                          <div>
+                            <span>12 MP, f/2.2</span>
+                          </div>
+                        </li>
+                        <li>
+                          <p>Operating System</p>
+                          <div>
+                            <span>iOS 13</span>
+                          </div>
+                        </li>
+                        <li>
+                          <p>Chipset (CPU manufacturer)</p>
+                          <div>
+                            <span>Apple A13 Bionic</span>
+                          </div>
+                        </li>
+                        <li>
+                          <p>CPU speed</p>
+                          <div>
+                            <span>Hexa-core</span>
+                          </div>
+                        </li>
+                        <li>
+                          <p>RAM</p>
+                          <div>
+                            <span>4 GB</span>
+                          </div>
+                        </li>
+                        <li>
+                          <p>Memory</p>
+                          <div>
+                            <span>64 GB</span>
+                          </div>
+                        </li>
+                        <li>
+                          <p>SIM</p>
+                          <div>
+                            <span>Nano SIM</span>
+                          </div>
+                        </li>
+                        <li>
+                          <p>Wifi</p>
+                          <div>
+                            <span
+                              >Wi-Fi 802.11 a/b/g/n/ac/ax, dual-band,
+                              hotspot</span
+                            >
+                          </div>
+                        </li>
+                        <li>
+                          <p>GPS</p>
+                          <div>
+                            <span>A-GPS, GLONASS, GALILEO, QZSS</span>
+                          </div>
+                        </li>
+                        <li>
+                          <p>Bluetooth</p>
+                          <div>
+                            <span>5.0, A2DP, LE</span>
+                          </div>
+                        </li>
+                        <li>
+                          <p>Size</p>
+                          <div>
+                            <span>150.9 x 75.7 x 8.3 mm</span>
+                          </div>
+                        </li>
+                        <li>
+                          <p>Weight</p>
+                          <div>
+                            <span>194 g</span>
+                          </div>
+                        </li>
+                        <li>
+                          <p>Battery</p>
+                          <div>
+                            <span>3110 mAh</span>
+                          </div>
+                        </li>
+                        <li>
+                          <p>Battery type</p>
+                          <div>
+                            <span>Li-Ion</span>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
 
-  <section id="footer">
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col col-lg-3 col-md-6 col-sm-12">
-            <div class="store-info">
-              <h3>About the store</h3>
-              <div class="info">
-                <ul class="contact-info">
-                  <li>
-                    <i class="fa-solid fa-location-dot"></i>
-                    <a href="http://maps.google.com/?q=Wonder Street,
-                        USA, New York">Wonder Street, USA, New York</a>
-                  </li>
-                  <li>
-                    <i class="fa-solid fa-phone"></i>
-                    <a href="tel:+1-541-754-3010
-                        ">+1-541-754-3010
-                    </a>
-                  </li>
-                  <li>
-                    <i class="fa-solid fa-envelope"></i>
-                    <a href="mailto: abc@example.com">abc@example.com</a>
-                  </li>
-                </ul>
+    <section id="footer">
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col col-lg-3 col-md-6 col-sm-12">
+              <div class="store-info">
+                <h3>About the store</h3>
+                <div class="info">
+                  <ul class="contact-info">
+                    <li>
+                      <i class="fa-solid fa-location-dot"></i>
+                      <a
+                        href="http://maps.google.com/?q=Wonder Street,
+                        USA, New York"
+                        >Wonder Street, USA, New York</a
+                      >
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-phone"></i>
+                      <a
+                        href="tel:+1-541-754-3010
+                        "
+                        >+1-541-754-3010
+                      </a>
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-envelope"></i>
+                      <a href="mailto: abc@example.com">abc@example.com</a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col col-lg-3 col-md-6 col-sm-12">
-            <h3>Follow us</h3>
-            <ul class="social-network-info">
-              <li>
-                <a href=""><i class="fa-brands fa-facebook"></i></a>
-              </li>
-              <li>
-                <a href=""><i class="fa-brands fa-instagram"></i></a>
-              </li>
-              <li>
-                <a href=""><i class="fa-brands fa-github"></i></a>
-              </li>
-              <li>
-                <a href=""><i class="fa-brands fa-linkedin"></i></a>
-              </li>
-            </ul>
-          </div>
-          <div class="col col-lg-3 col-md-6 col-sm-12">
-            <h3>Customer support</h3>
-            <ul>
-              <li><a href="">My account</a></li>
-              <li><a href="">Checkout</a></li>
-              <li><a href="">Cart</a></li>
-              <li><a href="">FAQ's</a></li>
-              <li><a href="">Help and support</a></li>
-            </ul>
-          </div>
-          <div class="col col-lg-3 col-md-6 col-sm-12">
-            <h3>Site information</h3>
-            <ul>
-              <li><a href="">Accessibility</a></li>
-              <li><a href="">Term and conditions</a></li>
-              <li><a href="">Privacy notices</a></li>
-              <li><a href="">Cookie policy</a></li>
-              <li><a href="">Fraud and scam alert</a></li>
-            </ul>
+            <div class="col col-lg-3 col-md-6 col-sm-12">
+              <h3>Follow us</h3>
+              <ul class="social-network-info">
+                <li>
+                  <a href=""><i class="fa-brands fa-facebook"></i></a>
+                </li>
+                <li>
+                  <a href=""><i class="fa-brands fa-instagram"></i></a>
+                </li>
+                <li>
+                  <a href=""><i class="fa-brands fa-github"></i></a>
+                </li>
+                <li>
+                  <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                </li>
+              </ul>
+            </div>
+            <div class="col col-lg-3 col-md-6 col-sm-12">
+              <h3>Customer support</h3>
+              <ul>
+                <li><a href="">My account</a></li>
+                <li><a href="">Checkout</a></li>
+                <li><a href="">Cart</a></li>
+                <li><a href="">FAQ's</a></li>
+                <li><a href="">Help and support</a></li>
+              </ul>
+            </div>
+            <div class="col col-lg-3 col-md-6 col-sm-12">
+              <h3>Site information</h3>
+              <ul>
+                <li><a href="">Accessibility</a></li>
+                <li><a href="">Term and conditions</a></li>
+                <li><a href="">Privacy notices</a></li>
+                <li><a href="">Cookie policy</a></li>
+                <li><a href="">Fraud and scam alert</a></li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
-  </section>
+      </footer>
+    </section>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
-    integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="./index.js"></script>
-  <script src="./script.js" type="module"></script>
-  <script src="./product-detail.js"></script>
-</body>
-
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+      integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./index.js"></script>
+    <script src="./script.js" type="module"></script>
+    <script src="./product-detail.js"></script>
+  </body>
 </html>
