@@ -4,7 +4,6 @@ $(document).ready(() => {
   const range = $(".slider .progress");
   let priceGap = 1000;
   priceInputs.each((index, priceInput) => {
-      console.log(priceInput);
     $(priceInput).on("input", function(e) {
       console.log(e.target);
       let minPrice = parseInt(priceInputs[0].value),

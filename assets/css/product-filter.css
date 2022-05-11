@@ -159,3 +159,17 @@ label {
   cursor: not-allowed;
   opacity: 1;
 }
+
+.search-bar {
+  display: inline-block;
+  width: 70%;
+}
+
+.search-bar .search-field {
+  max-width: 100%;
+  border-left: none;
+}
+
+.search-bar .search-field input {
+  width: 100%;
+}

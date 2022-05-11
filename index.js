@@ -5,9 +5,9 @@ $(document).ready(() => {
       : $(".navbar").removeClass("sticky");
   });
 
-  $(".categori-button-active").on("click", function() {
+  $(".categori-button-active").on("click", function () {
     $(".categori-dropdown-active-large").toggleClass("open");
-  })
+  });
 
   $(function () {
     $(".custom-dropdown").on("show.bs.dropdown", function () {
@@ -25,6 +25,52 @@ $(document).ready(() => {
   $(".wishlist").each((index, obj) => {
     $(obj).click(function () {
       $(this).children(".heart").toggleClass("fa-heart fa-heart-o");
-    })
+    });
+  });
+
+  //filter products
+  // quick search regex
+  var qsRegex;
+
+  var $grid = $(".grid").isotope({
+    // options
+    itemSelector: ".grid-item",
+    layoutMode: "fitRows",
+    percentPosition: true,
+  });
+
+  // use value of search field to filter
+  var $quicksearch = $(".search-input").keyup(
+    debounce(function () {
+      qsRegex = new RegExp($quicksearch.val(), "gi");
+      $grid.isotope({
+        filter: function () {
+          return qsRegex ? $(this).text().match(qsRegex) : true;
+        },
+      });
+    }, 200)
+  );
+
+  // debounce so filtering doesn't happen every millisecond
+  function debounce(fn, threshold) {
+    var timeout;
+    threshold = threshold || 100;
+    return function debounced() {
+      clearTimeout(timeout);
+      var args = arguments;
+      var _this = this;
+      function delayed() {
+        fn.apply(_this, args);
+      }
+      timeout = setTimeout(delayed, threshold);
+    };
+  }
+
+  $("select#brands").on("change", function (e) {
+    var optionSelected = $("option:selected", this);
+    var valueSelected = this.value;
+    $grid.isotope({
+      filter: valueSelected,
+    });
   });
 });
