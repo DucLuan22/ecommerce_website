@@ -6,7 +6,7 @@ class Cart
     {
         $DB = new DBConnect();
         $data = null;
-        $sql = "SELECT cart.product_id ,product.name, product.img,product.price, cart.quantity, cart.subTotal FROM cart INNER JOIN product ON cart.product_id = product.id WHERE cart.user_name='$username'";
+        $sql = "SELECT cart.product_id ,product.name, product.img,product.price, cart.quantity, cart.subTotal, brand.name as brand_name FROM cart INNER JOIN product ON cart.product_id = product.id INNER JOIN brand ON product.brand_id = brand.id WHERE cart.user_name='$username'";
         $result = mysqli_query($DB->connect(), $sql);
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {

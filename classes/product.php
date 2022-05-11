@@ -86,7 +86,7 @@ class Product
         $sql = "delete from product_details where product_id=$id";
         $result = mysqli_query($DB->connect(), $sql);
         if ($result) {
-            header("refresh:0.5;url=product-details.php");
+            header("refresh:0.5;url=product-details-admin.php");
         } else {
             echo "<script>alert('Error')</script>";
         }

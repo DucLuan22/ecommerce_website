@@ -13,8 +13,8 @@ if (isset($_POST['submit_update_details'])) {
     $product->updateProductDetails($_POST['edit_id'], $_POST['display_update'], $_POST['resolution_update'], $_POST['RAM_update'], $_POST['Memory_update'], $_POST['CPU_update'], $_POST['GPU_update'], $_POST['size_update'], $_POST['weight_update']);
 }
 
-if (isset($_GET['delete_id_product'])) {
-    $product->removeProduct($_GET['delete_id_product']);
+if (isset($_GET['delete_id_product_details'])) {
+    $product->removeProductDetails($_GET['delete_id_product_details']);
 }
 ?>
 
@@ -199,7 +199,7 @@ if (isset($_GET['delete_id_product'])) {
           <td scope="row">' . $row['weight'] . '</td>
           <td scope="row">
           <button class = "btn btn-primary edit_btn">Edit</button>
-          <button class = "btn btn-danger"><a class ="text-light text-decoration-none" href="product-view.php?delete_id_product_details=' . $row['id'] . '">Delete</a></button>
+          <button class = "btn btn-danger"><a class ="text-light text-decoration-none" href="product-details-admin.php?delete_id_product_details=' . $row['id'] . '">Delete</a></button>
           </td>
         </tr>';
                     }

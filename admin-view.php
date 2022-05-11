@@ -97,7 +97,6 @@ if (isset($_GET['delete_id_admin'])) {
             </div>
         </div>
     </form>
-    </div>
 
     <!-- Table -->
     <div class="container">

@@ -1,169 +1,114 @@
-* {
+.page-header.breadcrumb-wrap {
+  padding: 20px;
+  background-color: #f7f8f9;
+}
+
+.page-header .breadcrumb {
   padding: 0;
+  text-transform: capitalize;
+  color: #6e6e6e;
+  font-size: 1rem;
+  background: none;
   margin: 0;
-  box-sizing: border-box;
-}
-html {
-  font-family: Arial, Helvetica, sans-serif;
-}
-body {
-  display: block;
-}
-#main {
-  display: block;
-}
-#shopping-cart {
-  border: 1px solid black;
-}
-#header {
-  height: 46px;
-  background-color: #003366;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  /* z-index: 1; */
+  border-radius: 0;
 }
 
-#nav,
-.cart-btn {
-  display: inline-block;
-}
-#nav li {
-  display: inline-block;
-  position: relative;
-}
-#nav li a {
-  color: #fff;
-  text-transform: uppercase;
-  text-decoration: none;
-  line-height: 46px;
-  padding: 0 24px;
-  display: inline-block;
+table.cart-table tr td, table.cart-table th {
+  border: 0;
+  border-top: 1px solid #e2e9e1;
+  vertical-align: middle;
 }
 
-#nav li:hover a {
-  color: #fff;
-  background-color: #ccc;
-}
-
-.cart-btn {
-  display: inline-block;
-  color: #fff;
-  font-size: 20px;
-  line-height: 46px;
-  padding: 0 24px;
-}
-.cart-btn:hover {
-  color: #fff;
-  background-color: #ccc;
-}
-#search-bar {
-  width: 200px;
-  height: 28px;
-}
-#container {
-  margin: 80px auto;
-  width: 850px;
-}
-.text-center {
+td.product-image {
   display: flex;
   justify-content: center;
+  align-self: center;
 }
-.table-border {
+
+td.product-image img {
+  max-width: 80px;
+  max-height: 80px;
+}
+
+.quantity {
+  position: relative;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.product-quantity input {
   width: 100%;
-  border-collapse: collapse;
-  border-top: none;
-}
-.cart-info {
-  display: flex;
-  flex-wrap: wrap;
-}
-.btn-remove {
-  background-color: #ff523b;
-  color: #fff;
+  height: 42px;
+  line-height: 1.65;
+  float: left;
+  display: block;
+  padding: 0;
+  margin: 0;
+  padding-left: 20px;
   border: none;
-  border-radius: 6px;
-  width: 100%;
-  padding: 6px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+.product-quantity input:focus {
+  outline: 0;
+}
+
+.quantity-nav {
+  float: left;
+  position: relative;
+  height: 42px;
+}
+
+.quantity-button {
+  position: relative;
   cursor: pointer;
-}
-.btn-remove:hover {
-  opacity: 0.5;
-  background-color: #ff523b;
-  transition: 0.2s;
-}
-.btn-pay {
-  background-color: #ff523b;
-  color: #fff;
   border: none;
-  border-radius: 6px;
-  width: 100%;
-  padding: 6px;
-  cursor: pointer;
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  width: 21px;
+  text-align: center;
+  color: #333;
+  font-size: 13px;
+  font-family: "FontAwesome" !important;
+  line-height: 1.5;
+  padding: 0;
+  background: #FAFAFA;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
-.btn-pay:hover {
-  opacity: 0.5;
-  background-color: #ff523b;
+
+.quantity-button:active {
+  background: #EAEAEA;
 }
-td img {
-  width: 100px;
-  height: 100px;
-  margin-right: 10px;
+
+.quantity-button.quantity-up {
+  position: absolute;
+  height: 50%;
+  top: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  font-family: "FontAwesome";
+  border-radius: 0 4px 0 0;
+  line-height: 1.6
 }
-th {
-  text-align: left;
-  padding: 5px;
-  color: #fff;
-  background-color: #ff523b;
-  font-weight: normal;
-}
-td {
-  padding: 10px 5px;
-}
-td input {
-  width: 40px;
-  height: 30px;
-  padding: 5px;
-}
-td a {
-  color: #ff523b;
-  font-size: 12px;
-  text-decoration: none;
-}
-.total-price {
-  display: flex;
-  justify-content: flex-end;
-}
-.total-price table {
-  border-top: 3px solid #ff523b;
-  width: 100%;
-  max-width: 350px;
-}
-td:last-child {
-  text-align: right;
-}
-th:last-child {
-  text-align: right;
-}
-.form-control {
-  width: 200px;
-}
-/* back btn */
-.back-icon {
-  text-decoration: none;
-  padding: 12px;
-  color: #fff;
-  display: flex;
-  justify-content: flex-end;
-  font-size: 12px;
-  border-radius: 6px;
-  border: none;
-  background-color: #ff523b;
-  cursor: pointer;
-}
-.back-icon:hover {
-  opacity: 0.5;
-  background-color: #ff523b;
-  transition: 0.2;
+
+.quantity-button.quantity-down {
+  position: absolute;
+  bottom: 0;
+  height: 50%;
+  font-family: "FontAwesome";
+  border-radius: 0 0 4px 0;
 }

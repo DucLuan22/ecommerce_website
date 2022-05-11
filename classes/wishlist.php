@@ -50,4 +50,17 @@ class Wishlist
         $sql = "DELETE FROM wishlist WHERE username='$username' AND product_id ='$id'";
         $result = mysqli_query($DB->connect(), $sql);
     }
+
+    public function wishlistItemsCount($username)
+    {
+        $DB = new DBConnect();
+        $sql = "SELECT COUNT(*) as items FROM wishlist WHERE username= '$username'";
+        $result = mysqli_query($DB->connect(), $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
 }
