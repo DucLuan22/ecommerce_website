@@ -6,12 +6,17 @@ $product = new Product();
 $brand = new Brand();
 $category = new Category();
 if (isset($_POST['submit_product'])) {
-    $product->addProduct($_POST['product_name'], $_POST['product_desc'], (int)$_POST['brand-id'], (int)$_POST['category-id'], (float)$_POST['price'], $_POST['img']);
+    $target = "product-images/" . basename($_FILES['image']['name']);
+    $image = $_FILES['image']['name'];
+    $product->addProduct($_POST['product_name'], $_POST['product_desc'], (int)$_POST['brand-id'], (int)$_POST['category-id'], (float)$_POST['price'], $image);
+    move_uploaded_file($_FILES['image']['tmp_name'], $target);
 }
 
 if (isset($_POST['submit_update'])) {
-
-    $product->updateProduct($_POST['edit_id'], $_POST['product_name_update'], $_POST['product_desc_update'], (int)$_POST['brand-id-update'], (int)$_POST['category-id-update'], (float) $_POST['price_update'], $_POST['img_update']);
+    $target = "product-images/" . basename($_FILES['image-update']['name']);
+    $image = $_FILES['image-update']['name'];
+    $product->updateProduct($_POST['edit_id'], $_POST['product_name_update'], $_POST['product_desc_update'], (int)$_POST['brand-id-update'], (int)$_POST['category-id-update'], (float) $_POST['price_update'], $image);
+    move_uploaded_file($_FILES['image-update']['tmp_name'], $target);
 }
 if (isset($_GET['delete_id_product'])) {
     $product->removeProduct($_GET['delete_id_product']);
@@ -38,7 +43,7 @@ if (isset($_GET['delete_id_product'])) {
     include 'nav-bar.php';
     ?>
     <!-- Model for inserting product -->
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -89,7 +94,8 @@ if (isset($_GET['delete_id_product'])) {
                         </div>
                         <div class="form-group">
                             <label for="">Image</label>
-                            <input type="text" class="form-control" id="" placeholder="Enter Image Link" autocomplete="off" name="img" required />
+                            <input type="hidden" name="size" value="100000">
+                            <input type="file" class="form-control" autocomplete="off" name="image" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -106,7 +112,7 @@ if (isset($_GET['delete_id_product'])) {
         </button>
     </div>
     <!-- Model for updating product -->
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -158,7 +164,8 @@ if (isset($_GET['delete_id_product'])) {
                         </div>
                         <div class="form-group">
                             <label for="">Image</label>
-                            <input type="text" class="form-control" id="img2" placeholder="Enter Image Link" autocomplete="off" name="img_update" required />
+                            <input type="hidden" name="size" value="100000">
+                            <input type="file" class="form-control" autocomplete="off" name="image-update" required>
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -51,8 +51,7 @@ if (isset($_POST['action'])) {
                             Hero
                         </h1>
                         <p class="hero-subtitle animate__animated animate__backInRight animate__delay-2s">
-                            Nullam id dolor id nibh ultricies vehicula ut id elit. Cras
-                            justo odio, dapibus ac facilisis in, egestas eget quam.
+                            Welcome to our webistes.
                         </p>
                         <p>
                             <a class="btn btn-primary hero-button plat animate__animated animate__backInRight animate__delay-3s" role="button" href="#">Learn more</a>
@@ -62,7 +61,7 @@ if (isset($_POST['action'])) {
                 <div class="item">
                     <div class="bg-light border rounded border-light hero-photography carousel-hero jumbotron py-5 px-4">
                         <h1 class="hero-title animate__animated animate__delay-1s">
-                            Hero Photography
+                            Feel free to look around.
                         </h1>
                         <p class="hero-subtitle animate__animated animate__delay-2s">
                             Nullam id dolor id nibh ultricies vehicula ut id elit. Cras
@@ -98,6 +97,7 @@ if (isset($_POST['action'])) {
             <div class="top-products__body">
                 <div class="row top-products__list">
                     <?php
+
                     $rows = $product->fetchByCategory('5');
                     if (!empty($rows)) {
                         foreach ($rows as $row) {
@@ -111,7 +111,7 @@ if (isset($_POST['action'])) {
                 <input type="text" value ="' . $row['productID'] . '" name="product_id" hidden></input>
                 <img src="product-images/' . $row['img'] . '" href="product-detail.php?product_id=' . $row['productID'] . '" style="width: 100%"/>
               </div>
-              <a class="item-name"  href="product-detail.php?product_id=' . $row['productID'] . '">' . $row['name'] . '<a>
+              <a class="item-name"  href="product-detail.php?product_id=' . $row['productID'] . '">' . $row['name'] . '</a>
               <div class="item-rating">
                 <p>
                   <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>

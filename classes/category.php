@@ -55,4 +55,18 @@ class Category
         }
         return $data;
     }
+
+    public function fetchByID($id)
+    {
+        $DB = new DBConnect();
+        $data = null;
+        $sql = "SELECT * FROM category WHERE id = $id";
+        $result = mysqli_query($DB->connect(), $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
 }
