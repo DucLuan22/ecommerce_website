@@ -44,6 +44,12 @@ class Cart
             }
         }
     }
+    public function clearCart($username)
+    {
+        $DB = new DBConnect();
+        $sql = "delete from cart where user_name = '$username'";
+        $result = mysqli_query($DB->connect(), $sql);
+    }
     public function removeFromCart($id)
     {
         $DB = new DBConnect();

@@ -4,7 +4,7 @@ require_once('./classes/cart.php');
 require_once('./classes/category.php');
 require_once('./classes/wishlist.php');
 require_once('./classes/brand.php');
-$_SESSION['username'] = null;
+$_SESSION['username'] = '';
 $brand = new Brand();
 $product = new Product();
 $cart = new Cart();
@@ -37,7 +37,77 @@ if (isset($_POST['action'])) {
 </head>
 
 <body>
-  <?php include 'nav-bar-logged.php' ?>
+  <?php
+  require_once('./classes/cart.php');
+  require_once('./classes/wishlist.php');
+  require_once('./classes/category.php');
+  $wishlist = new Wishlist();
+  $cart = new Cart();
+  $category = new Category();
+  ?>
+  <header>
+    <div class="navbar-session container-fluid">
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><img src="./assets/Images/ecommerce-logo.png" style="width: 40px" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav w-100">
+            <li class="main-categori-wrap d-flex align-items-center" role="button">
+              <div class="categori-button-active">
+                <span class="fa-solid fa-bars"></span> Browse Categories
+              </div>
+              <div class="categori-dropdown-wrap categori-dropdown-active-large">
+                <ul>
+                  <?php
+                  $rows = $category->fetch();
+                  if (!empty($rows)) {
+                    foreach ($rows as $row) {
+                      echo '<li class="has-children">
+                    <a href="./product-filter.php?category_id=' . $row['id'] . '"><i class="fa fa-mobile" aria-hidden="true"></i>
+                      <span>' . $row['name'] . '</span>
+                    </a>
+                  </li>';
+                    }
+                  }
+                  ?>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="./index.php">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#footer">CONTACT</a>
+            </li>
+            <li class="nav-item dropdown custom-dropdown">
+              <a class="nav-link dropdown-toggle" id="dropdownMenuButton" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 20">ACCOUNT <i class="far fa-user"></i></a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="./login.php"><span class=""></span>Profile</a>
+                <a class="dropdown-item" href="./login.php"><span class=""></span>Login</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        </ul>
+        <div class="wishlist-checkout">
+          <div class="add-to-wishlist">
+            <a class="text-start" href="./login.php">
+              <i class="fa fa-heart-o" aria-hidden="true"></i>
+              <span class="wishlist-items" style="width: 18px"></span>
+            </a>
+            <p class="wishlist-title my-0">My Wish List</p>
+          </div>
+          <div class="checkout">
+            <p class="cart-title my-0">My Cart</p>
+          </div>
+        </div>
+    </div>
+    </nav>
+    </div>
+  </header>
 
 
   <section id="banner">
@@ -117,7 +187,7 @@ if (isset($_POST['action'])) {
               </div>
               <strong>$' . $row['price'] . '</strong>
               <div class="wishlist" data-bs-toggle="tooltip" data-bs-placement="auto" title="Add to wishlist">
-              <a class="heart ' . $heart_status . '" aria-hidden="true" style="color:red;background-color:white;" onclick="addToWishlist(' . $row['productID'] . ')"></a>
+              <a class="heart ' . $heart_status . '" aria-hidden="true" style="color:red;background-color:white;" onclick=""></a>
             </div>
             </form>
             </div>';
@@ -155,7 +225,7 @@ if (isset($_POST['action'])) {
                   </div>
                   <strong>$' . $row['price'] . '</strong>
                   <div class="wishlist" data-bs-toggle="tooltip" data-bs-placement="auto" title="Add to wishlist">
-                    <a class="heart ' . $heart_status . '" aria-hidden="true" style="color:red;background-color:white;" onclick="addToWishlist(' . $row['productID'] . ')"></a>
+                    <a class="heart ' . $heart_status . '" aria-hidden="true" style="color:red;background-color:white;" onclick=""></a>
                   </div>
             </div>';
               }
@@ -213,7 +283,7 @@ if (isset($_POST['action'])) {
                             </div>
                             <strong>$' . $row['price'] . '</strong>
                             <div class="wishlist" data-bs-toggle="tooltip" data-bs-placement="auto" title="Add to wishlist">
-                <a class="heart ' . $heart_status . '" aria-hidden="true" style="color:red;background-color:white;" onclick="addToWishlist(' . $row['id'] . ')"></a>
+                <a class="heart ' . $heart_status . '" aria-hidden="true" style="color:red;background-color:white;" onclick=""></a>
               </div>
                         </div>
                     </div>';

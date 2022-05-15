@@ -41,6 +41,7 @@ if (isset($_GET['product_id_delete'])) {
 
 <body style="font-family: Alata, sans-serif">
   <?php include 'nav-bar-logged.php'; ?>
+
   <div class="container">
     <h1>Your Wishlist</h1>
     <form action="" method="GET">
@@ -77,10 +78,6 @@ if (isset($_GET['product_id_delete'])) {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha512-Zq2BOxyhvnRFXu0+WE6ojpZLOU2jdnqbrM1hmVdGzyeCa1DgM3X5Q4A/Is9xA1IkbUeDd7755dNNI/PzSf2Pew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="./assets/js/index.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
-<?php
-include './config/script.php';
-?>

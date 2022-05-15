@@ -9,6 +9,9 @@ if (isset($_POST['action'])) {
 if (isset($_GET['delete_cart_product'])) {
   $cart->removeFromCart($_GET['delete_cart_product']);
 }
+if (isset($_POST['clear-cart'])) {
+  $cart->clearCart($_SESSION['username']);
+}
 ?>
 <html lang="en">
 
@@ -94,9 +97,12 @@ if (isset($_GET['delete_cart_product'])) {
                 ?>
                 <tr>
                   <td colspan="6" class="text-right">
-                    <a href="#" class="text-muted"> <i class="fa fa-times" aria-hidden="true"></i>
-                      Clear Cart</a>
+                    <form method="post">
+                      <button style="background-color: transparent;border: transparent;" class="text-muted" name="clear-cart"> <i class="fa fa-times" aria-hidden="true"></i>
+                        Clear Cart
+                      </button>
                   </td>
+                  </form>
                 </tr>
               </tbody>
             </table>
