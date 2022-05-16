@@ -101,6 +101,7 @@ if (isset($_POST['action'])) {
             <p class="wishlist-title my-0">My Wish List</p>
           </div>
           <div class="checkout">
+            <a class="text-start" href="./login.php"><i class="fas fa-shopping-cart"></i><span class="checkout-items" style="width: 18px"></span></a>
             <p class="cart-title my-0">My Cart</p>
           </div>
         </div>
@@ -108,7 +109,6 @@ if (isset($_POST['action'])) {
     </nav>
     </div>
   </header>
-
 
   <section id="banner">
     <div class="container-fluid">

@@ -1,13 +1,19 @@
 <?php
 require_once('./classes/product.php');
 require_once('./classes/cart.php');
+require_once('./classes/wishlist.php');
 if (!$_SESSION['username']) {
   $_SESSION['username'] = '';
 }
+$wishlist = new Wishlist();
 $product = new Product();
 $cart = new Cart();
 if (isset($_POST['add-to-cart'])) {
   $cart->addToCart($_GET['product_id'], $_SESSION['username'], $_POST['quantity']);
+}
+
+if (isset($_POST['wishlist'])) {
+  $wishlist->add($_GET['product_id'], $_SESSION['username']);
 }
 ?>
 <!DOCTYPE html>
@@ -40,6 +46,10 @@ if (isset($_POST['add-to-cart'])) {
 
     <div class="container my-5">
       <?php
+      $status = 'Add to Wishlist';
+      if ($wishlist->checkAdded($_GET['product_id'], $_SESSION['username']) == true) {
+        $status = 'Remove from Wishlist';
+      }
       $rows = $product->fetchByID($_GET['product_id']);
       if (!empty($rows)) {
         foreach ($rows as $row) {
@@ -50,13 +60,13 @@ if (isset($_POST['add-to-cart'])) {
           </div>
           <div class="product-img-list mt-4">
             <div class="product-img-item">
-              <img src="//cdn.tgdd.vn/Products/Images/42/153856/iphone-11-do-1-1-1-org.jpg" alt="" />
+              <img src="#" alt="" />
             </div>
             <div class="product-img-item">
-              <img src="//cdn.tgdd.vn/Products/Images/42/153856/iphone-11-xanh-la-1-1-org.jpg" alt="" />
+              <img src="#" alt="" />
             </div>
             <div class="product-img-item">
-              <img src="//cdn.tgdd.vn/Products/Images/42/153856/iphone-11-den-1-1-1-org.jpg" alt="" />
+              <img src="#" alt="" />
             </div>
           </div>
         </div>
@@ -92,7 +102,10 @@ if (isset($_POST['add-to-cart'])) {
                 </fieldset>
                 <div class="product-add-to-cart" style="margin-top:10px; margin-left:10px">
               <button class="add-to-cart" type="submit" name="add-to-cart">
-                Add to cart <i class="fas fa-shopping-cart"></i>
+                Add to Cart <i class="fas fa-shopping-cart"></i>
+              </button>
+              <button class="add-to-cart" type="submit" name="wishlist">
+                ' . $status . ' <i class="fa fa-heart" style ="color:white;"></i>
               </button>
             </div>
               </form>

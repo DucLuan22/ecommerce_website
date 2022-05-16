@@ -12,7 +12,6 @@ $wishlist = new Wishlist();
 if (isset($_POST['action'])) {
     if ($_POST["action"] == "insert") {
         $wishlist->add($_POST['id'], $_SESSION['username']);
-        echo '</script>console.log("Yes")</script>';
     }
 }
 
