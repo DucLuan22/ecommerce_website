@@ -14,8 +14,8 @@ jQuery(() => {
     percentPosition: true,
     getSortData: {
       price: function (itemElem) {
-        var price = $(itemElem).find(".item-price").text();
-        return parseInt(price);
+        var price = $(itemElem).find(".item-price").attr("data-price");
+        return parseFloat(price);
       },
     },
 
@@ -34,7 +34,7 @@ jQuery(() => {
     var sortValue = $(this).attr("data-sort-value");
     $grid.isotope({
       sortBy: sortValue,
-      sortAscending: sortType === "high-low" ? false : true,
+      sortAscending: sortType == "high-low" ? false : true,
     });
   });
 
