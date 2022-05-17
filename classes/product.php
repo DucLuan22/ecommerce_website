@@ -107,6 +107,7 @@ class Product
 
     public function fetchByID($id)
     {
+
         $DB = new DBConnect();
         $data = null;
         $sql = "SELECT product.id, product.name, product.description, brand.name AS brand_name, category.name AS category_name, product.price,product.img FROM product INNER JOIN brand ON product.brand_id = brand.id INNER JOIN category ON product.category_id = category.id WHERE product.id = $id";
@@ -136,14 +137,17 @@ class Product
     {
         $DB = new DBConnect();
         $data = null;
-        $sql = "SELECT product.id AS productID, product.name, product.description, brand.name AS brand_name, category.id, category.name AS category_name, product.price,product.img FROM product INNER JOIN brand ON product.brand_id = brand.id INNER JOIN category ON product.category_id = category.id WHERE product.category_id = $category ORDER BY RAND() LIMIT 8";
+        $category_id = mysqli_real_escape_string($DB->connect(), $category);
+        $sql = "SELECT product.id AS productID, product.name, product.description, brand.name AS brand_name, category.id, category.name AS category_name, product.price,product.img FROM product INNER JOIN brand ON product.brand_id = brand.id INNER JOIN category ON product.category_id = category.id WHERE product.category_id = $category_id ORDER BY RAND() LIMIT 8";
         $result = mysqli_query($DB->connect(), $sql);
-        if ($result) {
+        if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
                 $data[] = $row;
             }
+            return $data;
+        } else {
+            return 0;
         }
-        return $data;
     }
     public function fetchExcludedFromDetails()
     {
