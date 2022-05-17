@@ -5,6 +5,7 @@ class LoginHandler extends DBConnect
     public function checkLogin($username, $password, $table)
     {
         $DB = new DBConnect();
+        $username = mysqli_real_escape_string($DB->connect(), $username);
         $sql = "SELECT * FROM $table WHERE username ='$username' AND password ='$password'";
         $result = mysqli_query($DB->connect(), $sql);
         if (mysqli_num_rows($result) > 0) {
