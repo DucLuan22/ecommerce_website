@@ -33,7 +33,7 @@ $brand = new Brand();
         <div class="container">
             <div class="page-header breadcrumb-wrap">
                 <div class="container">
-                    <ul class="breadcrumb">
+                    <<ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="./index-logged.php">Home</a></li>
                         <?php
                         $rows = $category->fetchByID($_GET['category_id']);
@@ -43,7 +43,7 @@ $brand = new Brand();
                             }
                         }
                         ?>
-                    </ul>
+                        </ul>
                 </div>
             </div>
             <div class="products-filter-bar">
