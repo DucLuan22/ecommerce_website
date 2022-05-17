@@ -4,8 +4,12 @@ $(document).ready(() => {
   const range = $(".slider .progress");
   let priceGap = 1000;
   priceInputs.each((index, priceInput) => {
-      console.log(priceInput);
-    $(priceInput).on("input", function(e) {
+    console.log(priceInput);
+    $(priceInput).on("change", function (e) {
+      console.log(this.value);
+      // console.log(priceInputs[0].value);
+    });
+    $(priceInput).on("input", function (e) {
       console.log(e.target);
       let minPrice = parseInt(priceInputs[0].value),
         maxPrice = parseInt(priceInputs[1].value);
@@ -14,17 +18,17 @@ $(document).ready(() => {
         if (e.target.className === "input-min") {
           rangeInputs[0].value = minPrice;
           let leftStyle = (minPrice / rangeInputs[0].max) * 100 + "%";
-          $(range).css({"left": `${leftStyle}`});
+          $(range).css({ left: `${leftStyle}` });
         } else {
           rangeInputs[1].value = maxPrice;
           let rightStyle = 100 - (maxPrice / rangeInputs[1].max) * 100 + "%";
-          $(range).css({"right": `${rightStyle}`});
+          $(range).css({ right: `${rightStyle}` });
         }
       }
     });
   });
   rangeInputs.each((index, rangeInput) => {
-    $(rangeInput).on("input", function(e) {
+    $(rangeInput).on("input", function (e) {
       let minVal = parseInt(rangeInputs[0].value),
         maxVal = parseInt(rangeInputs[1].value);
       if (maxVal - minVal < priceGap) {
@@ -37,9 +41,9 @@ $(document).ready(() => {
         priceInputs[0].value = minVal;
         priceInputs[1].value = maxVal;
         let leftStyle = (minVal / rangeInputs[0].max) * 100 + "%";
-        $(range).css({"left": `${leftStyle}`});
+        $(range).css({ left: `${leftStyle}` });
         let rightStyle = 100 - (maxVal / rangeInputs[1].max) * 100 + "%";
-        $(range).css({"right": `${rightStyle}`});
+        $(range).css({ right: `${rightStyle}` });
       }
     });
   });

@@ -1,8 +1,10 @@
 <?php
 require_once('./classes/cart.php');
 require_once('./classes/wishlist.php');
+require_once('./classes/category.php');
 $wishlist = new Wishlist();
 $cart = new Cart();
+$category = new Category();
 ?>
 <header>
   <div class="navbar-session container-fluid">
@@ -19,128 +21,23 @@ $cart = new Cart();
             </div>
             <div class="categori-dropdown-wrap categori-dropdown-active-large">
               <ul>
-                <li class="has-children">
-                  <a href="shop-grid-right.html"><i class="fa fa-mobile" aria-hidden="true"></i>
-                    <span>Phone</span>
-                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                  </a>
-                  <div class="dropdown-menu">
-                    <ul class="mega-menu d-block">
-                      <li class="mega-menu-col">
-                        <ul class="d-block">
-                          <li class="mega-menu-col">
-                            <ul>
-                              <li>
-                                <span class="submenu-title">Hot &amp; Trending</span>
-                              </li>
-                              <li>
-                                <a class="dropdown-item nav-link nav_item" href="#">Iphone</a>
-                              </li>
-                              <li>
-                                <a class="dropdown-item nav-link nav_item" href="#">Samsung</a>
-                              </li>
-                              <li>
-                                <a class="dropdown-item nav-link nav_item" href="#">Xiaomi</a>
-                              </li>
-                              <li>
-                                <a class="dropdown-item nav-link nav_item" href="#">Oppo</a>
-                              </li>
-                              <li>
-                                <a class="dropdown-item nav-link nav_item" href="#">Realme</a>
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <li class="has-children">
-                  <a href="shop-grid-right.html"><i class="fa fa-laptop" aria-hidden="true"></i>
-                    <span>Laptop</span>
-                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                  </a>
-                  <div class="dropdown-menu">
-                    <ul class="mega-menu d-block">
-                      <li class="mega-menu-col">
-                        <ul class="d-block">
-                          <li class="mega-menu-col">
-                            <ul>
-                              <li>
-                                <span class="submenu-title">Hot &amp; Trending</span>
-                              </li>
-                              <li>
-                                <a class="dropdown-item nav-link nav_item" href="#">Mac</a>
-                              </li>
-                              <li>
-                                <a class="dropdown-item nav-link nav_item" href="#">HP</a>
-                              </li>
-                              <li>
-                                <a class="dropdown-item nav-link nav_item" href="#">Dell</a>
-                              </li>
-                              <li>
-                                <a class="dropdown-item nav-link nav_item" href="#">Lenovo</a>
-                              </li>
-                              <li>
-                                <a class="dropdown-item nav-link nav_item" href="#">ASUS</a>
-                              </li>
-                              <li>
-                                <a class="dropdown-item nav-link nav_item" href="#">ACER</a>
-                              </li>
-                              <li>
-                                <a class="dropdown-item nav-link nav_item" href="#">LG</a>
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <li class="has-children">
-                  <a href="shop-grid-right.html"><i class="fa fa-tablet" aria-hidden="true"></i>
-                    <span>Tablet</span>
-                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                  </a>
-                  <div class="dropdown-menu">
-                    <ul class="mega-menu d-block">
-                      <li class="mega-menu-col">
-                        <ul class="d-block">
-                          <li class="mega-menu-col">
-                            <ul>
-                              <li>
-                                <span class="submenu-title">Hot &amp; Trending</span>
-                              </li>
-                              <li>
-                                <a class="dropdown-item nav-link nav_item" href="#">iPad Pro</a>
-                              </li>
-                              <li>
-                                <a class="dropdown-item nav-link nav_item" href="#">iPad Air</a>
-                              </li>
-                              <li>
-                                <a class="dropdown-item nav-link nav_item" href="#">iPad Mini</a>
-                              </li>
-                              <li>
-                                <a class="dropdown-item nav-link nav_item" href="#">Samsung Tab</a>
-                              </li>
-                              <li>
-                                <a class="dropdown-item nav-link nav_item" href="#">Lenovo Tab</a>
-                              </li>
-                              <li>
-                                <a class="dropdown-item nav-link nav_item" href="#">Xiaomi Pad</a>
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
+                <?php
+                $rows = $category->fetch();
+                if (!empty($rows)) {
+                  foreach ($rows as $row) {
+                    echo '<li class="has-children">
+                    <a href="./product-filter.php?category_id=' . $row['id'] . '"><i class="fa fa-mobile" aria-hidden="true"></i>
+                      <span>' . $row['name'] . '</span>
+                    </a>
+                  </li>';
+                  }
+                }
+                ?>
               </ul>
             </div>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="./index-logged.php">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#footer">CONTACT</a>
@@ -187,4 +84,4 @@ $cart = new Cart();
   </div>
   </nav>
   </div>
-</header>
+</header> 
