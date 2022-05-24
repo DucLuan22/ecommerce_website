@@ -2,6 +2,8 @@
 require_once('./classes/product.php');
 require_once('./classes/cart.php');
 require_once('./classes/wishlist.php');
+require_once('./config/url.php');
+$url = new URL();
 if (!$_SESSION['username']) {
   $_SESSION['username'] = '';
 }
@@ -20,6 +22,7 @@ if (isset($_POST['wishlist'])) {
 <html lang="en">
 
 <head>
+  <base href=<?php echo $url->getUrl() ?>>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -37,6 +40,11 @@ if (isset($_POST['wishlist'])) {
   <link rel="stylesheet" href="./assets/css/user-dropdown.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    .disclaimer {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -193,74 +201,7 @@ if (isset($_POST['wishlist'])) {
     </div>
   </section>
 
-  <section id="footer">
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col col-lg-3 col-md-6 col-sm-12">
-            <div class="store-info">
-              <h3>About the store</h3>
-              <div class="info">
-                <ul class="contact-info">
-                  <li>
-                    <i class="fa-solid fa-location-dot"></i>
-                    <a href="http://maps.google.com/?q=Wonder Street,
-                        USA, New York">Wonder Street, USA, New York</a>
-                  </li>
-                  <li>
-                    <i class="fa-solid fa-phone"></i>
-                    <a href="tel:+1-541-754-3010
-                        ">+1-541-754-3010
-                    </a>
-                  </li>
-                  <li>
-                    <i class="fa-solid fa-envelope"></i>
-                    <a href="mailto: abc@example.com">abc@example.com</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col col-lg-3 col-md-6 col-sm-12">
-            <h3>Follow us</h3>
-            <ul class="social-network-info">
-              <li>
-                <a href=""><i class="fa-brands fa-facebook"></i></a>
-              </li>
-              <li>
-                <a href=""><i class="fa-brands fa-instagram"></i></a>
-              </li>
-              <li>
-                <a href=""><i class="fa-brands fa-github"></i></a>
-              </li>
-              <li>
-                <a href=""><i class="fa-brands fa-linkedin"></i></a>
-              </li>
-            </ul>
-          </div>
-          <div class="col col-lg-3 col-md-6 col-sm-12">
-            <h3>Customer support</h3>
-            <ul>
-              <li><a href="">My account</a></li>
-              <li><a href="">Checkout</a></li>
-              <li><a href="">Cart</a></li>
-              <li><a href="">FAQ's</a></li>
-              <li><a href="">Help and support</a></li>
-            </ul>
-          </div>
-          <div class="col col-lg-3 col-md-6 col-sm-12">
-            <h3>Site information</h3>
-            <ul>
-              <li><a href="">Accessibility</a></li>
-              <li><a href="">Term and conditions</a></li>
-              <li><a href="">Privacy notices</a></li>
-              <li><a href="">Cookie policy</a></li>
-              <li><a href="">Fraud and scam alert</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
+  <?php include 'footer.php' ?>
   </section>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
   </script>

@@ -1,6 +1,7 @@
 <?php
 require_once('./classes/user.php');
-
+require_once('./config/url.php');
+$url = new URL();
 $user = new User();
 if (isset($_POST['save-changes'])) {
     $user->updateProfile($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['phone'], $_SESSION['username']);
@@ -18,6 +19,7 @@ if (isset($_POST['change_password'])) {
 <html lang="en">
 
 <head>
+    <base href=<?php echo $url->getUrl() ?>>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,10 +35,11 @@ if (isset($_POST['change_password'])) {
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
             <div class="position-sticky">
                 <div class="list-group list-group-flush mx-3 mt-4">
-                    <a href="index-logged.php" class="list-group-item list-group-item-action py-2 ripple"><i class="fas fa-building fa-fw me-3"></i><span>Homepage</span></a>
+                    <a href="homepage" class="list-group-item list-group-item-action py-2 ripple"><i class="fas fa-building fa-fw me-3"></i><span>Homepage</span></a>
                     <a href="profile-view.php" class="list-group-item list-group-item-action py-2 ripple"><i class="fas fa-chart-bar fa-fw me-3"></i><span>Profile</span></a>
                     <a href="view-order-user.php" class="list-group-item list-group-item-action py-2 ripple"><i class="fas fa-globe fa-fw me-3"></i><span>Orders</span></a>
                     <a href="login.php" class="list-group-item list-group-item-action py-2 ripple"><i class="fas fa-building fa-fw me-3"></i><span>Logout</span></a>
+
                 </div>
             </div>
         </nav>

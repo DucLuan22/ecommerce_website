@@ -21,7 +21,7 @@ class CheckoutHandler
             if ($result3) {
                 $_SESSION['status'] = 'Order Successfully';
                 $_SESSION['status_code'] = 'success';
-                header("refresh:1.3;url=index-logged.php");
+                header("refresh:1.3;url=homepage");
             }
         }
     }

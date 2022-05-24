@@ -16,6 +16,11 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/Register.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        .disclaimer {
+            display: none;
+        }
+    </style>
 </head>
 
 <body style="background: rgb(177,213,224);">

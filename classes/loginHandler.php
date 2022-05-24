@@ -12,7 +12,7 @@ class LoginHandler extends DBConnect
             $row = mysqli_fetch_assoc($result);
             if ($table == 'user') {
                 $_SESSION['username'] = $row['username'];
-                header('Location: index-logged.php');
+                header('Location: homepage');
             } else {
                 $_SESSION['username_admin'] = $row['username'];
                 header('Location: category-view.php');

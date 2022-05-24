@@ -36,7 +36,7 @@
                             <a href=""><i class="fa-brands fa-instagram"></i></a>
                         </li>
                         <li>
-                            <a href=""><i class="fa-brands fa-github"></i></a>
+                            <a href="https://github.com/DucLuan22/ecommerce_website"><i class="fa-brands fa-github"></i></a>
                         </li>
                         <li>
                             <a href=""><i class="fa-brands fa-linkedin"></i></a>
@@ -46,7 +46,7 @@
                 <div class="col col-lg-3 col-md-6 col-sm-12">
                     <h3>Customer support</h3>
                     <ul>
-                        <li><a href="">My account</a></li>
+                        <li><a href="profile-view.php">My account</a></li>
                         <li><a href="">Checkout</a></li>
                         <li><a href="">Cart</a></li>
                         <li><a href="">FAQ's</a></li>

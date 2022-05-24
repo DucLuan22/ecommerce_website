@@ -32,8 +32,4 @@ class RegisterHandler
             $_SESSION['status_code'] = 'error';
         }
     }
-    public function checkExist($id)
-    {
-        
-    }
 }

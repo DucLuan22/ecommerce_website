@@ -35,11 +35,11 @@ class Cart
                 if ($search->num_rows > 0) {
                     $sql_3 = "UPDATE cart SET quantity = quantity + $quantity, subTotal = quantity * $price WHERE product_id = '$cart_item_id' AND user_name ='$cart_user_name'";
                     $update_quantity = mysqli_query($DB->connect(), $sql_3);
-                    header("refresh:0.5;url =product-detail.php?product_id=$cart_item_id");
+                    header("refresh:0.5;url =./$cart_item_id");
                 } else {
                     $sql = "INSERT INTO cart(user_name, product_id, quantity,subTotal) VALUES ('$cart_user_name','$cart_item_id',$quantity,$price*$quantity)";
                     $query = mysqli_query($DB->connect(), $sql);
-                    header("refresh:0.5;url=product-detail.php?product_id=$cart_item_id");
+                    header("refresh:0.5;url=./$cart_item_id");
                 }
             }
         }

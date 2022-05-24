@@ -212,7 +212,7 @@ if (isset($_POST['action'])) {
                                     <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>
                                 </p>
                             </div>
-                            <strong>$' . $row['price'] . '</strong>
+                            <strong class="item-price" data-price="' . $row['price'] . '">$' . $row['price'] . '</strong>
                             <div class="wishlist" data-bs-toggle="tooltip" data-bs-placement="auto" title="Add to wishlist">
                 <a class="heart ' . $heart_status . '" aria-hidden="true" style="color:red;background-color:white;" onclick="addToWishlist(' . $row['id'] . ')"></a>
               </div>
@@ -232,6 +232,8 @@ if (isset($_POST['action'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha512-Zq2BOxyhvnRFXu0+WE6ojpZLOU2jdnqbrM1hmVdGzyeCa1DgM3X5Q4A/Is9xA1IkbUeDd7755dNNI/PzSf2Pew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./assets/js/index.js"></script>
+    <script src="./assets/js/main-page.js"></script>
+    <script src="./assets/js/isotope.js"></script>
     <script>
         function addToWishlist(id) {
             $(document).ready(function() {

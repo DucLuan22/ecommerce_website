@@ -2,8 +2,7 @@
 require_once(__DIR__ . "/../config/dbconfig.php");
 class Category
 {
-    private $name;
-    private $description;
+
 
     public function addCategory($name, $desc)
     {
@@ -22,7 +21,7 @@ class Category
     public function updateCategory($id, $name, $desc)
     {
         $DB = new DBConnect();
-        $sql = "UPDATE category SET name='$name', description ='$desc' WHERE id ='$id'";
+        $sql = "UPDATE category SET name='$name', description ='$desc' WHERE id = $id";
         $query = mysqli_query($DB->connect(), $sql);
         if ($query) {
             $_SESSION['status_code'] = 'success';
@@ -58,6 +57,7 @@ class Category
 
     public function fetchByID($id)
     {
+        $id = str_replace("'", "", str_replace("/", "", $id));
         $DB = new DBConnect();
         $data = null;
         $sql = "SELECT * FROM category WHERE id = $id";

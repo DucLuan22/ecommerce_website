@@ -38,7 +38,7 @@ if (isset($_GET['delete_id_product'])) {
 
 <script src="/static/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
-<body style="font-family: Alata, sans-serif">
+<body style="font-family: Alata, sans-serif;">
     <?php
     include 'nav-bar.php';
     ?>
@@ -177,8 +177,8 @@ if (isset($_GET['delete_id_product'])) {
         </div>
     </form>
     <!-- Table -->
-    <div class="container">
-        <table class="table" style="width:95rem">
+    <div class="container" style="overflow: auto;">
+        <table class="table" style="width:80rem">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -202,7 +202,7 @@ if (isset($_GET['delete_id_product'])) {
           <td scope="row">' . $row['brand_name'] . '</td>
           <td scope="row">' . $row['category_name'] . '</td>
           <td scope="row">' . $row['price'] . '</td>
-          <td scope="row">' . $row['img'] . '</td>
+          <td scope="row"><img src="product-images/' . $row['img'] . '" alt="" style ="width:5rem; height:5rem;"></td>
           <td scope="row">
           <button class = "btn btn-primary edit_btn">Edit</button>
           <button class = "btn btn-danger"><a class ="text-light text-decoration-none" href="product-view.php?delete_id_product=' . $row['id'] . '">Delete</a></button>

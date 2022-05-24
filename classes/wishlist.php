@@ -4,8 +4,9 @@ class Wishlist
 {
     public function checkAdded($id, $username)
     {
+        $id = str_replace("'", "", str_replace("/", "", $id));
         $DB = new DBConnect();
-        $sql = "SELECT * FROM wishlist WHERE username='$username' AND product_id ='$id'";
+        $sql = "SELECT * FROM wishlist WHERE username='$username' AND product_id =$id";
         $result = mysqli_query($DB->connect(), $sql);
         if ($result->num_rows > 0) {
             return true;
@@ -17,7 +18,7 @@ class Wishlist
     {
         $DB = new DBConnect();
         $checker = new Wishlist;
-        if ($checker->checkAdded($id, $username) == false) {
+        if ($checker->checkAdded($id, $username) == false && $_SESSION['username'] != '') {
             $sql = "INSERT INTO wishlist(username, product_id) VALUES ('$username','$id')";
             $result = mysqli_query($DB->connect(), $sql);
             if ($result) {
@@ -27,6 +28,8 @@ class Wishlist
         } else if ($checker->checkAdded($id, $username) == true) {
             $sql = "DELETE FROM wishlist WHERE username='$username' AND product_id ='$id'";
             $result = mysqli_query($DB->connect(), $sql);
+        } else if ($_SESSION['username'] == '') {
+            header("refresh:0.5;url=login.php");
         }
     }
 

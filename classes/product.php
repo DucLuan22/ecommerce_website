@@ -70,6 +70,7 @@ class Product
     }
     public function removeProduct($id)
     {
+        $id = str_replace("'", "", $id);
         $DB = new DBConnect();
         $sql = "delete from product where id=$id";
         $result = mysqli_query($DB->connect(), $sql);
@@ -82,6 +83,7 @@ class Product
 
     public function removeProductDetails($id)
     {
+        $id = str_replace("'", "", str_replace("/", "", $id));
         $DB = new DBConnect();
         $sql = "delete from product_details where product_id=$id";
         $result = mysqli_query($DB->connect(), $sql);
@@ -107,10 +109,12 @@ class Product
 
     public function fetchByID($id)
     {
-
+        $id = str_replace("'", "", str_replace("/", "", $id));
         $DB = new DBConnect();
         $data = null;
-        $sql = "SELECT product.id, product.name, product.description, brand.name AS brand_name, category.name AS category_name, product.price,product.img FROM product INNER JOIN brand ON product.brand_id = brand.id INNER JOIN category ON product.category_id = category.id WHERE product.id = $id";
+        $sql = "SELECT product.id, product.name, product.description, brand.name AS brand_name, 
+        category.name AS category_name, product.price,product.img FROM product INNER JOIN brand ON product.brand_id = brand.id INNER JOIN category 
+        ON product.category_id = category.id WHERE product.id = $id ";
         $result = mysqli_query($DB->connect(), $sql);
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
@@ -135,6 +139,7 @@ class Product
     }
     public function fetchByCategory($category)
     {
+
         $DB = new DBConnect();
         $data = null;
         $category_id = mysqli_real_escape_string($DB->connect(), $category);
@@ -178,9 +183,10 @@ class Product
 
     public function fetchProductDetailsByID($id)
     {
+        $id = str_replace("'", "", str_replace("/", "", $id));
         $DB = new DBConnect();
         $data = null;
-        $sql = "SELECT product.id, product.name, b.display, b.resolution, b.RAM,b.memory,b.CPU,b.GPU,b.size,b.weight FROM product INNER JOIN product_details AS b ON product.id = b.product_id WHERE product.id ='$id';";
+        $sql = "SELECT product.id, product.name, b.display, b.resolution, b.RAM,b.memory,b.CPU,b.GPU,b.size,b.weight FROM product INNER JOIN product_details AS b ON product.id = b.product_id WHERE product.id =$id;";
         $result = mysqli_query($DB->connect(), $sql);
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
