@@ -8,7 +8,7 @@ class CheckoutHandler
         $DB = new DBConnect();
         $sql1 = "Select * from cart where user_name = '$username'";
         $result1 = mysqli_query($DB->connect(), $sql1);
-        if ($result1) {
+        if ($result1->num_rows > 0) {
             while ($row = mysqli_fetch_assoc($result1)) {
                 $product_id = (int)$row['product_id'];
                 $subTotal = (int)$row['subTotal'];

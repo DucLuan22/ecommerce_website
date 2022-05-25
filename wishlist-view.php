@@ -57,7 +57,7 @@ if (isset($_GET['product_id_delete'])) {
             <h5 class="card-title">' . $row['product_name'] . '</h5>
             <p class="card-text text-center">Price: $' . $row['price'] . '</p>
             <button type="button" class="btn btn-dark">
-            <a class ="text-light text-decoration-none" href="product-detail.php?product_id=' . $row['product_id'] . '">🛒 Order</a>
+            <a class ="text-light text-decoration-none" href="product/' . $row['product_id'] . '">🛒 Order</a>
             </button>
             <a class ="text-dark text-decoration-none" style="text-align:center" href="wishlist-view.php?product_id_delete=' . $row['product_id'] . '">Remove From Wishlist</a>
           </div>
@@ -72,8 +72,6 @@ if (isset($_GET['product_id_delete'])) {
       </div>
     </form>
   </div>
-
-
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
