@@ -31,7 +31,7 @@ class Cart
         $sql_price = "SELECT price FROM product WHERE id ='$cart_item_id'";
         $product_price = mysqli_query($DB->connect(), $sql_price);
         if ($_SESSION['username'] == '') {
-            header("refresh:0.5;url=login.php");
+            header("Location: ../login.php");
         }
         if ($product_price && $_SESSION['username'] != '') {
             while ($row = mysqli_fetch_assoc($product_price)) {

@@ -6,5 +6,6 @@ php_flag output_buffering on
 RewriteEngine On 
 
 RewriteRule ^homepage?$ index.php
+RewriteRule ^login?$ login.php
 RewriteRule ^product/([0-9]+) product-detail.php?product_id=$1
 RewriteRule ^category/([0-9]+) product-filter.php?category_id=$1

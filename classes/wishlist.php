@@ -29,7 +29,7 @@ class Wishlist
             $sql = "DELETE FROM wishlist WHERE username='$username' AND product_id ='$id'";
             $result = mysqli_query($DB->connect(), $sql);
         } else if ($_SESSION['username'] == '') {
-            header("refresh:0.5;url=login.php");
+            header("Location: ../login.php");
         }
     }
 
