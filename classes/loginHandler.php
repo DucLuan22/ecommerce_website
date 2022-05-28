@@ -1,22 +1,24 @@
 <?php
 require_once(__DIR__ . "/../config/dbconfig.php");
+require_once('user.php');
+require_once('admin.php');
 class LoginHandler extends DBConnect
 {
+    private $user;
+    private $admin;
     public function checkLogin($username, $password, $table)
     {
         $DB = new DBConnect();
+        $user = new User();
+        $admin = new Admin();
         $username = mysqli_real_escape_string($DB->connect(), $username);
-        $sql = "SELECT * FROM $table WHERE username ='$username' AND password ='$password'";
-        $result = mysqli_query($DB->connect(), $sql);
-        if (mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_assoc($result);
-            if ($table == 'user') {
-                $_SESSION['username'] = $row['username'];
-                header('Location: homepage');
-            } else {
-                $_SESSION['username_admin'] = $row['username'];
-                header('Location: category-view.php');
-            }
+
+        if ($user->checkLogin($username, $password) == true && $table == 'user') {
+            $_SESSION['username'] = $username;
+            header('Location: homepage');
+        } else if ($admin->checkLogin($username, $password) == true && $table == 'admin') {
+            $_SESSION['username_admin'] = $username;
+            header('Location: category-view.php');
         } else {
             $_SESSION['status_code'] = 'error';
             $_SESSION['status'] = 'The Username or Password is Wrong';

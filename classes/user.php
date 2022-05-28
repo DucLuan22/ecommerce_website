@@ -26,10 +26,21 @@ class User
         }
     }
 
+    public function checkLogin($username, $password)
+    {
+        $DB = new DBConnect();
+        $sql = "SELECT * FROM user WHERE username ='$username' AND password ='$password'";
+        $result = mysqli_query($DB->connect(), $sql);
+        if ($result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public function checkUsername($username)
     {
         $DB = new DBConnect();
-        $sql =  $sql = "SELECT * FROM user WHERE username ='$username'";
+        $sql = "SELECT * FROM user WHERE username ='$username'";
         $result = mysqli_query($DB->connect(), $sql);
         if ($result->num_rows > 0) {
             return true;
@@ -38,9 +49,6 @@ class User
         }
     }
 
-    public function checkExistUser($username, $password)
-    {
-    }
 
     public function registerUser($username, $email, $password)
     {
