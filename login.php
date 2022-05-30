@@ -2,8 +2,8 @@
 <html lang="en">
 <?php
 require "./classes/loginHandler.php";
+$_SESSION['username'] = '';
 $login = new LoginHandler();
-
 if (isset($_POST['submit'])) {
   $login->checkLogin($_POST['username'], md5($_POST['pwd']), 'user');
 }

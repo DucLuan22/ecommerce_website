@@ -16,7 +16,7 @@ if (isset($_POST['change_password'])) {
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">``
 
 <head>
     <base href=<?php echo $url->getUrl() ?>>

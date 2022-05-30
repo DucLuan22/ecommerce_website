@@ -9,8 +9,7 @@
                             <ul class="contact-info">
                                 <li>
                                     <i class="fa-solid fa-location-dot"></i>
-                                    <a href="http://maps.google.com/?q=Wonder Street,
-                      USA, New York">Wonder Street, USA, New York</a>
+                                    <a href="">Binh Thanh, HCM, ABC Street</a>
                                 </li>
                                 <li>
                                     <i class="fa-solid fa-phone"></i>

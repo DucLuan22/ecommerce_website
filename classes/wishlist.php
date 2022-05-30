@@ -14,9 +14,18 @@ class Wishlist
             return false;
         }
     }
+
+    public function remove($id, $username)
+    {
+        $DB = new DBConnect();
+        $sql = "DELETE FROM wishlist WHERE username='$username' AND product_id ='$id'";
+        $result = mysqli_query($DB->connect(), $sql);
+    }
+
     public function add($id, $username)
     {
         $DB = new DBConnect();
+        $wishlist = new Wishlist();
         $checker = new Wishlist;
         if ($checker->checkAdded($id, $username) == false && $_SESSION['username'] != '') {
             $sql = "INSERT INTO wishlist(username, product_id) VALUES ('$username','$id')";
@@ -26,8 +35,7 @@ class Wishlist
                 die(mysqli_error($DB->connect()));
             }
         } else if ($checker->checkAdded($id, $username) == true) {
-            $sql = "DELETE FROM wishlist WHERE username='$username' AND product_id ='$id'";
-            $result = mysqli_query($DB->connect(), $sql);
+            $wishlist->remove($id, $username);
         } else if ($_SESSION['username'] == '') {
             header("Location: ../login.php");
         }
@@ -47,12 +55,7 @@ class Wishlist
             return 0;
         }
     }
-    public function remove($id, $username)
-    {
-        $DB = new DBConnect();
-        $sql = "DELETE FROM wishlist WHERE username='$username' AND product_id ='$id'";
-        $result = mysqli_query($DB->connect(), $sql);
-    }
+
 
     public function wishlistItemsCount($username)
     {

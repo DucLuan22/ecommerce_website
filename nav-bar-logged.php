@@ -50,6 +50,8 @@ $category = new Category();
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href=<?php echo '' . ($_SESSION['username'] != '' ? './profile-view.php' : './login.php'); ?>><span class=""></span>Profile</a>
               <a class="dropdown-item" href="./login.php"><span class=""></span><?php echo '' . ($_SESSION['username'] != '' ? 'Logout' : 'Login'); ?></a>
+              <?php echo '' . ($_SESSION['username'] != '' ? null : '<a href="./register.php" class="dropdown-item">Register</a>'); ?>
+
             </div>
           </li>
         </ul>
