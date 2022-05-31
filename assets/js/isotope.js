@@ -6,7 +6,6 @@ jQuery(() => {
   var sliderMinVal;
   var sliderMaxVal;
 
-
   var $grid = $(".grid").isotope({
     // options
     itemSelector: ".grid-item",
@@ -25,7 +24,7 @@ jQuery(() => {
       var searchResult = qsRegex ? $this.text().match(qsRegex) : true;
       var buttonResult = buttonFilter ? $this.is(buttonFilter) : true;
       var filterPriceResult = filterPrice(priceVal, sliderMinVal, sliderMaxVal);
-      return filterPriceResult && (searchResult && buttonResult);
+      return filterPriceResult && searchResult && buttonResult;
     },
   });
 
@@ -81,6 +80,6 @@ jQuery(() => {
   });
 
   function filterPrice(priceVal, minVal = 0, maxVal = 10000) {
-    return minVal <= parseInt(priceVal) && maxVal >= parseInt(priceVal);
+    return minVal <= parseFloat(priceVal) && maxVal >= parseFloat(priceVal);
   }
 });
