@@ -77,26 +77,28 @@ class User
     public function changePassword($current_pass, $new_password, $conf_new_pwd, $username)
     {
         $DB = new DBConnect();
-        $sql = "SELECT * FROM user WHERE username ='$username'";
-        $result = mysqli_query($DB->connect(), $sql);
-        while ($row = mysqli_fetch_assoc($result)) {
-            $password = $row['password'];
-            if (strcmp($password, $current_pass) == 0 && strcmp($new_password, $conf_new_pwd) == 0) {
-                $sql2 = "UPDATE user SET password ='$new_password' WHERE username ='$username'";
-                $result2 = mysqli_query($DB->connect(), $sql2);
-                if ($result2) {
-                    $_SESSION['status_code'] = 'success';
-                    $_SESSION['status'] = 'Change Successfully';
+        $user = new User();
+        $rows = $user->fetchByUsername($username);
+        if (!empty($rows)) {
+            foreach ($rows as $row) {
+                $password = $row['password'];
+                if (strcmp($password, $current_pass) == 0 && strcmp($new_password, $conf_new_pwd) == 0) {
+                    $sql2 = "UPDATE user SET password ='$new_password' WHERE username ='$username'";
+                    $result2 = mysqli_query($DB->connect(), $sql2);
+                    if ($result2) {
+                        $_SESSION['status_code'] = 'success';
+                        $_SESSION['status'] = 'Change Successfully';
+                        header("refresh:1.5;url=profile-view.php");
+                    }
+                } else if ($new_password != $conf_new_pwd) {
+                    $_SESSION['status_code'] = 'error';
+                    $_SESSION['status'] = 'The new password doesn\'t match';
+                    header("refresh:1.5;url=profile.php");
+                } else {
+                    $_SESSION['status_code'] = 'error';
+                    $_SESSION['status'] = 'The current password is invalid';
                     header("refresh:1.5;url=profile-view.php");
                 }
-            } else if ($new_password != $conf_new_pwd) {
-                $_SESSION['status_code'] = 'error';
-                $_SESSION['status'] = 'The new password doesn\'t match';
-                header("refresh:1.5;url=profile.php");
-            } else {
-                $_SESSION['status_code'] = 'error';
-                $_SESSION['status'] = 'The current password is invalid';
-                header("refresh:1.5;url=profile-view.php");
             }
         }
     }
@@ -114,7 +116,7 @@ class User
         return $data;
     }
 
-    public function fetchByID($username)
+    public function fetchByUsername($username)
     {
         $DB = new DBConnect();
         $data = null;

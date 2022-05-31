@@ -10,15 +10,15 @@ $category = new Category();
 
 <?php ($_SESSION['username'] == '') ? './login.php' : './profile-view.php' ?>
 <header>
-  <div class="navbar-session container-fluid">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar sticky navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
       <a class="navbar-brand" href="#"><img src="./assets/Images/ecommerce-logo.png" style="width: 40px" /></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav w-100">
-          <li class="main-categori-wrap d-flex align-items-center" role="button">
+          <li class="nav-item main-categori-wrap d-flex align-items-center" role="button">
             <div class="categori-button-active">
               <span class="fa-solid fa-bars"></span> Browse Categories
             </div>
@@ -51,42 +51,32 @@ $category = new Category();
               <a class="dropdown-item" href=<?php echo '' . ($_SESSION['username'] != '' ? './profile-view.php' : './login.php'); ?>><span class=""></span>Profile</a>
               <a class="dropdown-item" href="./login.php"><span class=""></span><?php echo '' . ($_SESSION['username'] != '' ? 'Logout' : 'Login'); ?></a>
               <?php echo '' . ($_SESSION['username'] != '' ? null : '<a href="./register.php" class="dropdown-item">Register</a>'); ?>
-
             </div>
           </li>
         </ul>
-      </div>
+        <div class="wishlist-checkout mt-lg-0 mt-2">
+          <div class="add-to-wishlist">
+            <a class="text-start" href=<?php echo '' . ($_SESSION['username'] != '' ? './wishlist-view.php' : './login.php'); ?>>
+              <i class="fa fa-heart-o" aria-hidden="true"></i>
 
-      </ul>
-      <div class="wishlist-checkout">
-        <div class="add-to-wishlist">
-          <a class="text-start" href=<?php echo '' . ($_SESSION['username'] != '' ? './wishlist-view.php' : './login.php'); ?>>
-            <i class="fa fa-heart-o" aria-hidden="true"></i>
+              <span class="wishlist-items" style="width: 18px"></span>
+            </a>
+            <p class="wishlist-title my-0">My Wish List</p>
+          </div>
+          <div class="checkout">
             <?php
-            $rows = $wishlist->wishlistItemsCount($_SESSION['username']);
+            $rows = $cart->CountUserCart($_SESSION['username']);
             if (!empty($rows)) {
               foreach ($rows as $row) {
-                echo '<span class="wishlist-items" style="width: 18px">' . $row['items'] . '</span>';
+                echo '<a class="text-start" href=' . ($_SESSION['username'] != '' ? './cart-view.php' : './login.php') . '><i class="fas fa-shopping-cart"></i><span class="checkout-items" style="width: 18px">' . $row['items'] . '</span></a>';
               }
             }
             ?>
-            <span class="wishlist-items" style="width: 18px"></span>
-          </a>
-          <p class="wishlist-title my-0">My Wish List</p>
-        </div>
-        <div class="checkout">
-          <?php
-          $rows = $cart->CountUserCart($_SESSION['username']);
-          if (!empty($rows)) {
-            foreach ($rows as $row) {
-              echo '<a class="text-start" href=' . ($_SESSION['username'] != '' ? './cart-view.php' : './login.php') . '><i class="fas fa-shopping-cart"></i><span class="checkout-items" style="width: 18px">' . $row['items'] . '</span></a>';
-            }
-          }
-          ?>
-          <p class="cart-title my-0">My Cart</p>
+            <p class="cart-title my-0">My Cart</p>
+          </div>
         </div>
       </div>
-  </div>
+
+    </div>
   </nav>
-  </div>
 </header>

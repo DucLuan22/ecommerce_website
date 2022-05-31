@@ -12,6 +12,7 @@ if (isset($_POST['change_password'])) {
     $current_pass = md5($_POST['current_pass']);
     $new_password = md5($_POST['new_pass']);
     $conf_new_pwd = md5($_POST['conf_new_pass']);
+    $user->changePassword($current_pass, $new_password, $conf_new_pwd, $username);
 }
 
 ?>
@@ -96,7 +97,7 @@ if (isset($_POST['change_password'])) {
                     <div class="col-8">
                         <h4>Profile Settings</h4>
                         <?php
-                        $rows = $user->fetchByID($_SESSION['username']);
+                        $rows = $user->fetchByUsername($_SESSION['username']);
                         if (!empty($rows)) {
                             foreach ($rows as $row) {
                                 echo '<div class="row">
@@ -139,7 +140,6 @@ if (isset($_POST['change_password'])) {
                 </div>
             </form>
         </form>
-
     </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
