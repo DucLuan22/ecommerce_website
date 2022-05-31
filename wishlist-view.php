@@ -57,7 +57,7 @@ if (isset($_GET['product_id_delete'])) {
             <h5 class="card-title">' . $row['product_name'] . '</h5>
             <p class="card-text text-center">Price: $' . $row['price'] . '</p>
             <button type="button" class="btn btn-dark">
-            <a class ="text-light text-decoration-none" href="product-detail.php?product_id=' . $row['product_id'] . '">🛒 Order</a>
+            <a class ="text-light text-decoration-none" href="product/' . $row['product_id'] . '">🛒 Order</a>
             </button>
             <a class ="text-dark text-decoration-none" style="text-align:center" href="wishlist-view.php?product_id_delete=' . $row['product_id'] . '">Remove From Wishlist</a>
           </div>

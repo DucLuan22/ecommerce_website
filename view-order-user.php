@@ -14,6 +14,7 @@ $order = new Order();
     <link rel="stylesheet" href="./assets/css/sidebar.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Adamina&amp;display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata&amp;display=swap" />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
     <title>Profile</title>
 </head>
 

@@ -2,10 +2,13 @@
 require_once('./classes/cart.php');
 require_once('./classes/wishlist.php');
 require_once('./classes/category.php');
+
 $wishlist = new Wishlist();
 $cart = new Cart();
 $category = new Category();
 ?>
+
+<?php ($_SESSION['username'] == '') ? './login.php' : './profile-view.php' ?>
 <header>
   <nav class="navbar sticky navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -26,7 +29,7 @@ $category = new Category();
                 if (!empty($rows)) {
                   foreach ($rows as $row) {
                     echo '<li class="has-children">
-                    <a href="./product-filter.php?category_id=' . $row['id'] . '"><i class="fa fa-mobile" aria-hidden="true"></i>
+                    <a href="./category/' . $row['id'] . '"><i aria-hidden="true"></i>
                       <span>' . $row['name'] . '</span>
                     </a>
                   </li>';
@@ -37,7 +40,7 @@ $category = new Category();
             </div>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="./index-logged.php">HOME <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="./homepage">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#footer">CONTACT</a>
@@ -45,23 +48,17 @@ $category = new Category();
           <li class="nav-item dropdown custom-dropdown">
             <a class="nav-link dropdown-toggle" id="dropdownMenuButton" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 20">ACCOUNT <i class="far fa-user"></i></a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="./profile-view.php"><span class=""></span>Profile</a>
-              <a class="dropdown-item" href="./login-admin.php"><span class=""></span>Log out</a>
+              <a class="dropdown-item" href=<?php echo '' . ($_SESSION['username'] != '' ? './profile-view.php' : './login.php'); ?>><span class=""></span>Profile</a>
+              <a class="dropdown-item" href="./login.php"><span class=""></span><?php echo '' . ($_SESSION['username'] != '' ? 'Logout' : 'Login'); ?></a>
+              <?php echo '' . ($_SESSION['username'] != '' ? null : '<a href="./register.php" class="dropdown-item">Register</a>'); ?>
             </div>
           </li>
         </ul>
         <div class="wishlist-checkout mt-lg-0 mt-2">
           <div class="add-to-wishlist">
-            <a class="text-start" href="./wishlist-view.php">
+            <a class="text-start" href=<?php echo '' . ($_SESSION['username'] != '' ? './wishlist-view.php' : './login.php'); ?>>
               <i class="fa fa-heart-o" aria-hidden="true"></i>
-              <?php
-              $rows = $wishlist->wishlistItemsCount($_SESSION['username']);
-              if (!empty($rows)) {
-                foreach ($rows as $row) {
-                  echo '<span class="wishlist-items" style="width: 18px">' . $row['items'] . '</span>';
-                }
-              }
-              ?>
+
               <span class="wishlist-items" style="width: 18px"></span>
             </a>
             <p class="wishlist-title my-0">My Wish List</p>
@@ -71,7 +68,7 @@ $category = new Category();
             $rows = $cart->CountUserCart($_SESSION['username']);
             if (!empty($rows)) {
               foreach ($rows as $row) {
-                echo '<a class="text-start" href="./cart-view.php"><i class="fas fa-shopping-cart"></i><span class="checkout-items" style="width: 18px">' . $row['items'] . '</span></a>';
+                echo '<a class="text-start" href=' . ($_SESSION['username'] != '' ? './cart-view.php' : './login.php') . '><i class="fas fa-shopping-cart"></i><span class="checkout-items" style="width: 18px">' . $row['items'] . '</span></a>';
               }
             }
             ?>
@@ -79,6 +76,7 @@ $category = new Category();
           </div>
         </div>
       </div>
+
     </div>
   </nav>
 </header>

@@ -15,6 +15,7 @@ if (isset($_GET['delete_id_customer'])) {
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Adamina&amp;display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata&amp;display=swap" />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
 </head>
 
 <script src="/static/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>

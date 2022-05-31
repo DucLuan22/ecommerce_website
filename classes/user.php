@@ -14,6 +14,55 @@ class User
         }
     }
 
+    public function checkExistEmail($email)
+    {
+        $DB = new DBConnect();
+        $sql =  $sql = "SELECT * FROM user WHERE email ='$email'";
+        $result = mysqli_query($DB->connect(), $sql);
+        if ($result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function checkLogin($username, $password)
+    {
+        $DB = new DBConnect();
+        $sql = "SELECT * FROM user WHERE username ='$username' AND password ='$password'";
+        $result = mysqli_query($DB->connect(), $sql);
+        if ($result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function checkUsername($username)
+    {
+        $DB = new DBConnect();
+        $sql = "SELECT * FROM user WHERE username ='$username'";
+        $result = mysqli_query($DB->connect(), $sql);
+        if ($result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    public function registerUser($username, $email, $password)
+    {
+        $DB = new DBConnect();
+        $sql = "INSERT INTO user(username, email, password) VALUES ('$username', '$email', '$password')";
+        $result = mysqli_query($DB->connect(), $sql);
+        if ($result) {
+            $_SESSION['status_code'] = 'success';
+            $_SESSION['status'] = 'Register Successfully';
+        } else {
+            $_SESSION['status'] = 'Register Unsuccessfully';
+            $_SESSION['status_code'] = 'error';
+        }
+    }
     public function updateProfile($fname, $lname, $email, $phone, $username)
     {
         $DB = new DBConnect();

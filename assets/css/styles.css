@@ -19,10 +19,16 @@ a {
   color: #333;
 }
 
+.disclaimer {
+  display: none;
+}
+
 .container-fluid {
   padding: 0;
 }
-
+.container-admin {
+  overflow: auto;
+}
 /* icons */
 .fa.fa-star,
 .fa.fa-star-half {

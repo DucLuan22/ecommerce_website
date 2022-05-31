@@ -24,6 +24,7 @@ if (isset($_GET['delete_id_admin'])) {
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Adamina&amp;display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata&amp;display=swap" />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
 </head>
 <script src="/static/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -66,7 +67,7 @@ if (isset($_GET['delete_id_admin'])) {
 
     <!-- Button trigger modal -->
     <div class="col text-center" style="margin-top: 10px;margin-bottom: 16px;"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-            Add Category
+            Add Admin
         </button>
     </div>
     <!-- Modal for update -->

@@ -32,21 +32,22 @@ $admin = new Admin();
                     </div>
                 </li>
             </ul>
-        </div>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <?php
-                $rows = $admin->fetchByUsername($_SESSION['username_admin']);
-                if (!empty($rows)) {
-                    foreach ($rows as $row) {
-                        echo 'Hello, ' . $row['username'] . '';
+            <div class="dropdown" style="float: right;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <?php
+                    $rows = $admin->fetchByUsername($_SESSION['username_admin']);
+                    if (!empty($rows)) {
+                        foreach ($rows as $row) {
+                            echo 'Hello, ' . $row['username'] . '';
+                        }
                     }
-                }
-                ?>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="login-admin.php">Logout</a></li>
-            </ul>
+                    ?>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="login-admin.php">Logout</a></li>
+                </ul>
+            </div>
         </div>
+
     </div>
 </nav>

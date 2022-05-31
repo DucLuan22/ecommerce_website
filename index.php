@@ -4,15 +4,22 @@ require_once('./classes/cart.php');
 require_once('./classes/category.php');
 require_once('./classes/wishlist.php');
 require_once('./classes/brand.php');
-$_SESSION['username'] = '';
+require_once('./config/url.php');
+$url = new URL();
+if (!$_SESSION['username']) {
+  $_SESSION['username'] = '';
+}
+
 $brand = new Brand();
 $product = new Product();
 $cart = new Cart();
 $wishlist = new Wishlist();
-
 if (isset($_POST['action'])) {
-  header('Location: login.php');
+  if ($_POST["action"] == "insert") {
+    $wishlist->add($_POST['id'], $_SESSION['username']);
+  }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,67 +41,17 @@ if (isset($_POST['action'])) {
   <link rel="stylesheet" href="./assets/css/user-dropdown.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    .disclaimer {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
-  <?php
-  require_once('./classes/cart.php');
-  require_once('./classes/wishlist.php');
-  require_once('./classes/category.php');
-  $wishlist = new Wishlist();
-  $cart = new Cart();
-  $category = new Category();
-  ?>
   <?php include 'nav-bar-logged.php' ?>
+  <?php include 'banner.php' ?>
 
-  <section id="banner">
-    <div class="container-fluid">
-      <div class="owl-carousel owl-theme banner">
-        <div class="item">
-          <div class="bg-light border rounded border-light hero-nature carousel-hero jumbotron py-5 px-4">
-            <h1 class="hero-title animate__animated animate__backInRight animate__delay-1s">
-              Hero
-            </h1>
-            <p class="hero-subtitle animate__animated animate__backInRight animate__delay-2s">
-              Nullam id dolor id nibh ultricies vehicula ut id elit. Cras
-              justo odio, dapibus ac facilisis in, egestas eget quam.
-            </p>
-            <p>
-              <a class="btn btn-primary hero-button plat animate__animated animate__backInRight animate__delay-3s" role="button" href="#">Learn more</a>
-            </p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="bg-light border rounded border-light hero-photography carousel-hero jumbotron py-5 px-4">
-            <h1 class="hero-title animate__animated animate__delay-1s">
-              Hero Photography
-            </h1>
-            <p class="hero-subtitle animate__animated animate__delay-2s">
-              Nullam id dolor id nibh ultricies vehicula ut id elit. Cras
-              justo odio, dapibus ac facilisis in, egestas eget quam.
-            </p>
-            <p>
-              <a class="btn btn-primary hero-button plat animate__animated animate__delay-3s" role="button" href="#">Learn more</a>
-            </p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="bg-light border rounded border-light hero-technology carousel-hero jumbotron py-5 px-4">
-            <h1 class="hero-title animate__animated animate__delay-1s">
-              Hero Technology
-            </h1>
-            <p class="hero-subtitle animate__animated animate__delay-2s">
-              Nullam id dolor id nibh ultricies vehicula ut id elit. Cras
-              justo odio, dapibus ac facilisis in, egestas eget quam.
-            </p>
-            <p>
-              <a class="btn btn-primary hero-button plat animate__animated animate__delay-3s" role="button" href="#">Learn more</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
   <section id="top-products">
     <div class="container top-products">
       <div class="top-products__header">
@@ -103,6 +60,7 @@ if (isset($_POST['action'])) {
       <div class="top-products__body">
         <div class="row top-products__list">
           <?php
+
           $rows = $product->fetchByCategory('5');
           if (!empty($rows)) {
             foreach ($rows as $row) {
@@ -116,7 +74,7 @@ if (isset($_POST['action'])) {
                 <input type="text" value ="' . $row['productID'] . '" name="product_id" hidden></input>
                 <img src="product-images/' . $row['img'] . '" href="product-detail.php?product_id=' . $row['productID'] . '" style="width: 100%"/>
               </div>
-              <a class="item-name"  href="product-detail.php?product_id=' . $row['productID'] . '">' . $row['name'] . '<a>
+              <a class="item-name"  href="product/' . $row['productID'] . '">' . $row['name'] . '</a>
               <div class="item-rating">
                 <p>
                   <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>
@@ -124,7 +82,7 @@ if (isset($_POST['action'])) {
               </div>
               <strong>$' . $row['price'] . '</strong>
               <div class="wishlist" data-bs-toggle="tooltip" data-bs-placement="auto" title="Add to wishlist">
-              <a class="heart ' . $heart_status . '" aria-hidden="true" style="color:red;background-color:white;" onclick=""></a>
+              <a class="heart ' . $heart_status . '" aria-hidden="true" style="color:red;background-color:white;" onclick="addToWishlist(' . $row['productID'] . ')"></a>
             </div>
             </form>
             </div>';
@@ -136,39 +94,40 @@ if (isset($_POST['action'])) {
     </div>
     <div class="container top-products">
       <div class="top-products__header">
-        <h1><strong>Featured</strong> Laptop</h1>
+        <h1>Featured Laptop</h1>
       </div>
       <div class="top-products__body">
-        <div class="top-products__list">
-          <div class="owl-carousel owl-theme featured-laptop">
+        <div class="row top-products__list">
+          <?php
 
-            <?php
-            $rows = $product->fetchByCategory('3');
-            if (!empty($rows)) {
-              foreach ($rows as $row) {
-                $heart_status = 'fa fa-heart-o';
-                if ($wishlist->checkAdded($row['productID'], $_SESSION['username']) == true) {
-                  $heart_status = 'fa fa-heart';
-                }
-                echo '<div class="top-products__item item">
-              <div class="top-products__item__img">
-                <img src="product-images/' . $row['img'] . '" style="width: 100%" />
-              </div>
-              <a class="item-name" href="product-detail.php?product_id=' . $row['productID'] . '">' . $row['name'] . '<a>
-                  <div class="item-rating">
-                    <p>
-                      <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>
-                    </p>
-                  </div>
-                  <strong>$' . $row['price'] . '</strong>
-                  <div class="wishlist" data-bs-toggle="tooltip" data-bs-placement="auto" title="Add to wishlist">
-                    <a class="heart ' . $heart_status . '" aria-hidden="true" style="color:red;background-color:white;" onclick=""></a>
-                  </div>
-            </div>';
+          $rows = $product->fetchByCategory('3');
+          if (!empty($rows)) {
+            foreach ($rows as $row) {
+              $heart_status = 'fa fa-heart-o';
+              if ($wishlist->checkAdded($row['productID'], $_SESSION['username']) == true) {
+                $heart_status = 'fa fa-heart';
               }
+              echo '<div class="col-12 col-md-6 top-products__item col-lg-3">
+              <div class="top-products__item__img">
+              <form method="POST">
+                <input type="text" value ="' . $row['productID'] . '" name="product_id" hidden></input>
+                <img src="product-images/' . $row['img'] . '"  style="width: 100%"/>
+              </div>
+              <a class="item-name"  href="product/' . $row['productID'] . '">' . $row['name'] . '</a>
+              <div class="item-rating">
+                <p>
+                  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>
+                </p>
+              </div>
+              <strong>$' . $row['price'] . '</strong>
+              <div class="wishlist" data-bs-toggle="tooltip" data-bs-placement="auto" title="Add to wishlist">
+              <a class="heart ' . $heart_status . '" aria-hidden="true" style="color:red;background-color:white;" onclick="addToWishlist(' . $row['productID'] . ')"></a>
+            </div>
+            </form>
+            </div>';
             }
-            ?>
-          </div>
+          }
+          ?>
         </div>
       </div>
     </div>
@@ -212,7 +171,7 @@ if (isset($_POST['action'])) {
                             <div class="top-products__item__img">
                                 <img src="./product-images/' . $row['img'] . '" style="width: 100%" />
                             </div>
-                            <a class="item-name"  href="product-detail.php?product_id=' . $row['id'] . '">' . $row['name'] . '<a>
+                            <a class="item-name"  href="product/' . $row['id'] . '">' . $row['name'] . '<a>
                             <div class="item-rating">
                                 <p>
                                     <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>
@@ -220,7 +179,7 @@ if (isset($_POST['action'])) {
                             </div>
                             <strong class="item-price" data-price="' . $row['price'] . '">$' . $row['price'] . '</strong>
                             <div class="wishlist" data-bs-toggle="tooltip" data-bs-placement="auto" title="Add to wishlist">
-                <a class="heart ' . $heart_status . '" aria-hidden="true" style="color:red;background-color:white;" onclick=""></a>
+                <a class="heart ' . $heart_status . '" aria-hidden="true" style="color:red;background-color:white;" onclick="addToWishlist(' . $row['id'] . ')"></a>
               </div>
                         </div>
                     </div>';
@@ -254,7 +213,7 @@ if (isset($_POST['action'])) {
             if (response == 1) {
               alert("Added to wishlist");
             } else if (response == 0) {
-              alert("Can't add to wishlist");
+              alert("Please login before adding items to wishlist.");
             }
           }
         });

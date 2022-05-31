@@ -2,13 +2,17 @@
 require_once('./classes/product.php');
 require_once('./classes/category.php');
 require_once('./classes/brand.php');
+require_once('./config/url.php');
+$url = new URL();
 $category = new Category();
 $product = new Product();
 $brand = new Brand();
+$site = $url->getUrl();
 ?>
 <html lang="en">
 
 <head>
+    <base href=<?php echo $url->getUrl() ?>>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title>Project Ecommerce</title>
@@ -34,7 +38,7 @@ $brand = new Brand();
             <div class="page-header breadcrumb-wrap">
                 <div class="container">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="./index-logged.php">Home</a></li>
+                        <li class="breadcrumb-item"><a href="homepage">Home</a></li>
                         <?php
                         $rows = $category->fetchByID($_GET['category_id']);
                         if (!empty($rows)) {
@@ -115,7 +119,7 @@ $brand = new Brand();
                             <div class="top-products__item__img">
                                 <img src="./product-images/' . $row['img'] . '" style="width: 100%" />
                             </div>
-                            <a class="item-name"  href="product-detail.php?product_id=' . $row['productID'] . '">' . $row['name'] . '</a>
+                            <a class="item-name"  href="product/' . $row['productID'] . '">' . $row['name'] . '</a>
                             <div class="item-rating">
                                 <p>
                                 <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>
@@ -162,75 +166,7 @@ $brand = new Brand();
             </div>
         </div>
     </main>
-    <section id="footer">
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col col-lg-3 col-md-6 col-sm-12">
-                        <div class="store-info">
-                            <h3>About the store</h3>
-                            <div class="info">
-                                <ul class="contact-info">
-                                    <li>
-                                        <i class="fa-solid fa-location-dot"></i>
-                                        <a href="http://maps.google.com/?q=Wonder Street,
-                      USA, New York">Wonder Street, USA, New York</a>
-                                    </li>
-                                    <li>
-                                        <i class="fa-solid fa-phone"></i>
-                                        <a href="tel:+1-541-754-3010
-                      ">+1-541-754-3010
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <i class="fa-solid fa-envelope"></i>
-                                        <a href="mailto: abc@example.com">abc@example.com</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-lg-3 col-md-6 col-sm-12">
-                        <h3>Follow us</h3>
-                        <ul class="social-network-info">
-                            <li>
-                                <a href=""><i class="fa-brands fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href=""><i class="fa-brands fa-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href=""><i class="fa-brands fa-github"></i></a>
-                            </li>
-                            <li>
-                                <a href=""><i class="fa-brands fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col col-lg-3 col-md-6 col-sm-12">
-                        <h3>Customer support</h3>
-                        <ul>
-                            <li><a href="">My account</a></li>
-                            <li><a href="">Checkout</a></li>
-                            <li><a href="">Cart</a></li>
-                            <li><a href="">FAQ's</a></li>
-                            <li><a href="">Help and support</a></li>
-                        </ul>
-                    </div>
-                    <div class="col col-lg-3 col-md-6 col-sm-12">
-                        <h3>Site information</h3>
-                        <ul>
-                            <li><a href="">Accessibility</a></li>
-                            <li><a href="">Term and conditions</a></li>
-                            <li><a href="">Privacy notices</a></li>
-                            <li><a href="">Cookie policy</a></li>
-                            <li><a href="">Fraud and scam alert</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </section>
+    <?php include './footer.php' ?>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

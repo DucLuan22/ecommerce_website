@@ -2,8 +2,8 @@
 <html lang="en">
 <?php
 require "./classes/loginHandler.php";
+$_SESSION['username'] = '';
 $login = new LoginHandler();
-
 if (isset($_POST['submit'])) {
   $login->checkLogin($_POST['username'], md5($_POST['pwd']), 'user');
 }
@@ -17,6 +17,11 @@ if (isset($_POST['submit'])) {
   <link rel="stylesheet" href="assets/fonts/ionicons.min.css" />
   <link rel="stylesheet" href="assets/css/Login-Form-Clean.css" />
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    .disclaimer {
+      display: none;
+    }
+  </style>
 </head>
 
 <body style="background: rgb(177, 213, 224)">

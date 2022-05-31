@@ -25,6 +25,12 @@ if (isset($_GET['delete_id_brand'])) {
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Adamina&amp;display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata&amp;display=swap" />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <style>
+        .disclaimer {
+            display: none;
+        }
+    </style>
 </head>
 
 <script src="/static/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -96,7 +102,7 @@ if (isset($_GET['delete_id_brand'])) {
     </form>
     </div>
 
-    <div class="container">
+    <div class="container-admin">
         <table class="table">
             <thead>
                 <tr>

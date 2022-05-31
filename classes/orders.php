@@ -9,14 +9,14 @@ class Order
     private $quantity;
     private $brand;
 
-    public function createOrder($name, $desc, $brand_id, $category_id, $price, $img)
+    public function createOrder($username, $product_id, $subTotal, $quantity, $location, $firstName, $lastName, $payment)
     {
         $DB = new DBConnect();
-        $sql = "INSERT INTO product(name, description, brand_id, category_id, price, img) VALUES ('$name','$desc',$brand_id,$category_id,$price,'$img')";
+        $sql = "INSERT INTO orders(user_name,product_id,subTotal,quantity,location,firstName,lastName,paymentType,status) VALUES ('$username','$product_id',$subTotal,$quantity,'$location','$firstName','$lastName','$payment','waiting for confirmation')";
         $result = mysqli_query($DB->connect(), $sql);
         if ($result) {
             $_SESSION['status_code'] = 'success';
-            $_SESSION['status'] = 'Add Successfully';
+            $_SESSION['status'] = 'Order Created';
             header("refresh:1.5;url=product-view.php");
         } else {
             die(mysqli_error($DB->connect()));

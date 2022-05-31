@@ -21,6 +21,17 @@ class Admin
         }
     }
 
+    public function checkLogin($username, $password)
+    {
+        $DB = new DBConnect();
+        $sql = "SELECT * FROM admin WHERE username ='$username' AND password ='$password'";
+        $result = mysqli_query($DB->connect(), $sql);
+        if ($result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public function updateAdmin($id, $name, $password)
     {
         $DB = new DBConnect();

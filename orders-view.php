@@ -57,7 +57,7 @@ if (isset($_GET['delete_id_order'])) {
         </div>
     </form>
     <!-- Table -->
-    <div class="container">
+    <div class="container" style="overflow: auto;">
         <table class="table">
             <thead>
                 <tr>

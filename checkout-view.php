@@ -1,8 +1,11 @@
 <?php
 require "./classes/cart.php";
 require "./classes/checkoutHandler.php";
+require_once('./config/url.php');
+$url = new URL();
 $cart = new Cart();
 $checkout = new CheckoutHandler();
+
 if (isset($_POST['checkout-btn'])) {
     $checkout->checkOutCart($_SESSION['username'], $_POST['district'], $_POST['ward'], $_POST['address'], $_POST['city'], $_POST['firstname'], $_POST['lastname'], $_POST['payment']);
 }
@@ -11,6 +14,7 @@ if (isset($_POST['checkout-btn'])) {
 <html lang="en">
 
 <head>
+    <base href=<?php echo $url->getUrl() ?>>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title>Checkout</title>

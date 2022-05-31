@@ -1,28 +1,29 @@
 <?php
 require_once(__DIR__ . "/../config/dbconfig.php");
+require_once("orders.php");
+require_once("cart.php");
 class CheckoutHandler
 {
+    private $order;
+    private $cart;
     public function checkOutCart($username, $district, $ward, $address, $city, $firstName, $lastName, $payment)
     {
-        $location = $address . ' ' . $ward . ' ' . $district . ' ' . $city;
+        $order = new Order();
+        $cart = new Cart();
         $DB = new DBConnect();
-        $sql1 = "Select * from cart where user_name = '$username'";
-        $result1 = mysqli_query($DB->connect(), $sql1);
-        if ($result1) {
-            while ($row = mysqli_fetch_assoc($result1)) {
+        $rows = $cart->fetchCartByUser($username);
+        if (!empty($rows)) {
+            $location = $address . ' ' . $ward . ' ' . $district . ' ' . $city;
+            foreach ($rows as $row) {
                 $product_id = (int)$row['product_id'];
                 $subTotal = (int)$row['subTotal'];
                 $quantity = (int)$row['quantity'];
-                $sql2 = "INSERT INTO orders(user_name,product_id,subTotal,quantity,location,firstName,lastName,paymentType,status) VALUES ('$username','$product_id',$subTotal,$quantity,'$location','$firstName','$lastName','$payment','waiting for confirmation')";
-                $result2  = mysqli_query($DB->connect(), $sql2);
+                $order->createOrder($username, $product_id, $subTotal, $quantity, $location, $firstName, $lastName, $payment);
             }
-            $sql_delete = "DELETE FROM cart WHERE user_name ='$username'";
-            $result3 = mysqli_query($DB->connect(), $sql_delete);
-            if ($result3) {
-                $_SESSION['status'] = 'Order Successfully';
-                $_SESSION['status_code'] = 'success';
-                header("refresh:1.3;url=index-logged.php");
-            }
+            $cart->clearCart($username);
+            $_SESSION['status'] = 'Order Successfully';
+            $_SESSION['status_code'] = 'success';
+            header("refresh:1.3;url=homepage");
         }
     }
 }
