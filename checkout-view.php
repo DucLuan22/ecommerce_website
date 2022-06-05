@@ -1,8 +1,10 @@
 <?php
 require "./classes/cart.php";
+require "./classes/user.php";
 require "./classes/checkoutHandler.php";
 require_once('./config/url.php');
 $url = new URL();
+$user = new User();
 $cart = new Cart();
 $checkout = new CheckoutHandler();
 
@@ -69,22 +71,26 @@ if (isset($_POST['checkout-btn'])) {
 
                 </ul>
             </div>
-            <div class="col-8">
+            <?php
+            $rows = $user->fetchByUsername($_SESSION['username']);
+            if (!empty($rows)) {
+                foreach ($rows as $row) {
+                    echo '<div class="col-8">
                 <h4>Billing Address</h4>
                 <div class="row">
                     <div class="col-6">
                         <label class="form-label" for="firstname">First Name</label>
-                        <input type="text" name="firstname" class="form-control" required>
+                        <input type="text" name="firstname" class="form-control" value=' . $row['firstName'] . ' required>
                     </div>
                     <div class="col-6">
                         <label class="form-label" for="lastname">Last name</label>
-                        <input type="text" name="lastname" class="form-control" required>
+                        <input type="text" name="lastname" class="form-control" value=' . $row['lastName'] . ' required>
                     </div>
                     <div class="col-12">
                         <label class="from-label" for="username">Username</label>
                         <div class="input-group">
                             <span class="input-group-text">@</span>
-                            <?php echo '<input type="text" class="form-control" id="usrname"  value ="' . $_SESSION['username'] . '" readonly>' ?>
+                            <input type="text" class="form-control" id="usrname"  value ="' . $_SESSION['username'] . '" readonly>
                         </div>
                     </div>
                     <div class="col-12">
@@ -99,7 +105,7 @@ if (isset($_POST['checkout-btn'])) {
                     </div>
                     <div class="col-4">
                         <label class="form-label" for="district">District</label>
-                        <select class="form-select" name="district" id='district'>
+                        <select class="form-select" name="district" id="district">
 
                         </select>
                     </div>
@@ -140,7 +146,11 @@ if (isset($_POST['checkout-btn'])) {
                 </div>
                 <hr>
                 <button type="submit" class="btn btn-primary btn-block mb-4" name="checkout-btn">Continue To Checkout</button>
-            </div>
+            </div>';
+                }
+            }
+            ?>
+
         </div>
     </form>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

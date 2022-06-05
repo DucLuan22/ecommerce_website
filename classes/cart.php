@@ -82,7 +82,7 @@ class Cart
     public function CountUserCart($username)
     {
         $DB = new DBConnect();
-        $sql = "SELECT COUNT(*) as items FROM cart WHERE user_name= '$username'";
+        $sql = "SELECT SUM(quantity) as items FROM cart WHERE user_name= '$username'";
         $result = mysqli_query($DB->connect(), $sql);
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
