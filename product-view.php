@@ -1,3 +1,4 @@
+<?php error_reporting(0); ?>
 <?php
 require_once('./classes/product.php');
 require_once('./classes/brand.php');

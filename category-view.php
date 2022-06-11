@@ -157,7 +157,6 @@ if (isset($_GET['delete_id_category'])) {
 </body>
 
 </html>
-
 <?php
 include './config/script.php'
 ?>

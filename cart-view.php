@@ -60,11 +60,12 @@ if (isset($_POST['clear-cart'])) {
                 </tr>
               </thead>
               <tbody>
-                <?php
-                $rows = $cart->fetchCartByUser($_SESSION['username']);
-                if (!empty($rows)) {
-                  foreach ($rows as $row) {
-                    echo '<tr>
+                <tr>
+                  <?php
+                  $rows = $cart->fetchCartByUser($_SESSION['username']);
+                  if (!empty($rows)) {
+                    foreach ($rows as $row) {
+                      echo '
                     <td class="product-image">
                       <img src="./product-images/' . $row['img'] . '" alt="">
                     </td>
@@ -96,10 +97,13 @@ if (isset($_POST['clear-cart'])) {
                         <i class="fa-regular fa-trash-can"></i>
                       </a>
                     </td>
-                  </tr>';
+                  ';
+                    }
+                  } else if ($rows == null) {
+                    echo '<td colspan="6"><h3 style="text-align:center;color:gray;">Your wishlist is empty.</h3></td><div>';
                   }
-                }
-                ?>
+                  ?>
+                </tr>
                 <tr>
                   <td colspan="6" class="text-right">
                     <form method="post">

@@ -108,7 +108,7 @@ if (isset($_POST['wishlist'])) {
                 <fieldset data-quantity>
                   <legend>Change quantity</legend>
                 </fieldset>
-                <div class="product-add-to-cart" style="margin-top:10px; margin-left:10px">
+                <div class="product-add-to-cart" style="margin-top:25px; margin-left:10px;">
               <button class="add-to-cart" type="submit" name="add-to-cart">
                 Add to Cart <i class="fas fa-shopping-cart"></i>
               </button>

@@ -141,7 +141,7 @@ if (isset($_POST['checkout-btn'])) {
                     </div>
                     <div class="col-3">
                         <label class="form-label" for="cvv">CVV </label>
-                        <input type="text" id="cvv" class="form-control">
+                        <input type="text" id="cvv" class="form-control" required>
                     </div>
                 </div>
                 <hr>
